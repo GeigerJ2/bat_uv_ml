@@ -1,0 +1,17 @@
+clean_workdir: False
+meta_convergence: True
+tolerance_onsite: 0.1
+tolerance_intersite: 0.01
+skip_first_relax: False
+scf:
+  clean_workdir: False
+  kpoints_distance: 0.3
+relax:
+  clean_workdir: False
+hubbard:
+  clean_workdir: False
+  hp:
+    settings:
+      cmdline:
+        - "-nk"
+        - "8"
