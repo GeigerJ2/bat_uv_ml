@@ -4,3 +4,7 @@ data/olivines_iurii_unmod/
 data/spinel_iurii_unmod/
 code/env
 data/
+.history/
+.vscode/
+code/si_band_structure.pdf
+code/backup.ipynb
