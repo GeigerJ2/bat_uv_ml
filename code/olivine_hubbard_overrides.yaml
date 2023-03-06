@@ -6,12 +6,23 @@ skip_first_relax: True
 scf:
   clean_workdir: False
   kpoints_distance: 0.3
+  pw:
+    settings:
+      cmdline:
+        - "-nk"
+        - "4"
 relax:
   clean_workdir: False
+  base:
+    pw:
+      settings:
+        cmdline:
+          - "-nk"
+          - "4"
 hubbard:
   clean_workdir: False
   hp:
     settings:
       cmdline:
         - "-nk"
-        - "8"
+        - "4"
