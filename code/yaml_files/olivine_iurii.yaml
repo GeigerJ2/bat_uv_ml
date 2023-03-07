@@ -7,7 +7,7 @@ scf:
   clean_workdir: False
   pw:
     parameters:
-      CONTROL:
+      SYSTEM:
         ecutwfc: 110 # Was lower in Iurii's input, but use same here as for relax
         ecutrho: 1320 # Was lower in Iurii's input, but use same here as for relax
       ELECTRONS:
