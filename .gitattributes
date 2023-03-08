@@ -1,4 +1,4 @@
-*.ipynb filter=nb-clean
+# *.ipynb filter=nb-clean
 # *.ipynb filter=strip-notebook-output
 # *.ipynb filter=nbstripout
 # *.zpln filter=nbstripout
