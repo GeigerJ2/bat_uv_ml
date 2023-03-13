@@ -7,3 +7,4 @@ code/si_band_structure.pdf
 code/backup.ipynb
 **/__pycache__/
 aiida_trials/
+code/autoformat.py
