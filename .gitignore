@@ -5,5 +5,5 @@ code/env-bat_uv_ml
 .vscode/
 code/si_band_structure.pdf
 code/backup.ipynb
-__pycache__/
+**/__pycache__/
 aiida_trials/

@@ -5,7 +5,6 @@ tolerance_intersite: 0.01
 skip_first_relax: True
 scf:
   clean_workdir: False
-  kpoints_distance: 0.3
   pw:
     settings:
       cmdline:
@@ -25,4 +24,4 @@ hubbard:
     settings:
       cmdline:
         - "-nk"
-        - "4"
+        - "8"

@@ -1,0 +1,52 @@
+clean_workdir: False
+meta_convergence: True
+tolerance_onsite: 0.1
+tolerance_intersite: 0.01
+skip_first_relax: True
+scf:
+  clean_workdir: False
+  pw:
+    parameters:
+      SYSTEM:
+        ecutwfc: 110 # Was lower in Iurii's input, but use same here as for relax
+        ecutrho: 1320 # Was lower in Iurii's input, but use same here as for relax
+      ELECTRONS:
+        conv_thr: 1.e-10
+        electron_maxstep: 300
+    settings:
+      cmdline:
+        - "-nk"
+        - "4"
+relax:
+  clean_workdir: False
+  base:
+    pw:
+      parameters:
+        CONTROL:
+          nstep: 200
+          etot_conv_thr: 5.e-6
+          forc_conv_thr: 5.e-5
+        SYSTEM:
+          ecutwfc: 110
+          ecutrho: 1320
+        ELECTRONS:
+          conv_thr: 1.e-10 # Same as in Iurii's scf, while in his vcrelax was 10^-12
+          electron_maxstep: 300
+        IONS:
+          trust_radius_ini: 1.e-4
+          trust_radius_min: 1.e-8
+          upscale: 1
+      settings:
+        cmdline:
+          - "-nk"
+          - "4"
+hubbard:
+  clean_workdir: False
+  hp:
+    # parameters:
+    # INPUTHP:
+    #   dist_thr: 6.e-3 # Iurii did not set the dist_thr in his UV input file
+    settings:
+      cmdline:
+        - "-nk"
+        - "8"

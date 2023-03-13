@@ -1,0 +1,29 @@
+clean_workdir: False
+meta_convergence: True
+tolerance_onsite: 0.1
+tolerance_intersite: 0.01
+skip_first_relax: True
+scf:
+  clean_workdir: False
+  pw:
+    parameters:
+      SYSTEM:
+        ecutwfc: 110 # Was lower in Iurii's input, but use same here as for relax
+        ecutrho: 1320 # Was lower in Iurii's input, but use same here as for relax
+      ELECTRONS:
+        conv_thr: 1.e-10
+        electron_maxstep: 300
+    settings:
+      cmdline:
+        - "-nk"
+        - "4"
+hubbard:
+  clean_workdir: False
+  hp:
+    # parameters:
+    # INPUTHP:
+    #   dist_thr: 6.e-3 # Iurii did not set the dist_thr in his UV input file
+    settings:
+      cmdline:
+        - "-nk"
+        - "8"
