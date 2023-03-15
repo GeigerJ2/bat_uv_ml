@@ -6,9 +6,24 @@ skip_first_relax: True
 scf:
   clean_workdir: False
   pseudo_family: 'SSSP/1.2/PBEsol/efficiency'
+  pw:
+    settings:
+      cmdline:
+        - "-nk"
+        - "4"
 relax:
   clean_workdir: False
   pseudo_family: 'SSSP/1.2/PBEsol/efficiency'
+  base:
+    pw:
+      parameters:
+        CONTROL:
+          nstep: 200
+          forc_conv_thr: 5.e-5
+      settings:
+        cmdline:
+          - "-nk"
+          - "4"
 hubbard:
   clean_workdir: False
   hp:

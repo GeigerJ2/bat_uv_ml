@@ -12,7 +12,7 @@ from pprint import pprint
 import pandas as pd
 from aiida import load_profile
 from aiida.engine import submit
-from aiida.orm import Bool, Group, Int, Str, load_code
+from aiida.orm import Bool, Group, Int, Str, load_code, load_group, load_node
 from aiida_quantumespresso.common.types import SpinType
 from aiida_quantumespresso.data.hubbard_structure import HubbardStructureData
 from aiida_quantumespresso.workflows.pw.base import PwBaseWorkChain
@@ -109,7 +109,7 @@ relabel_dict = {
     3: "Mn2",
 }
 
-mag_dict = {
+afm_mag_dict = {
     "starting_magnetization": {
         "Mn1": 0.5,
         "Mn2": -0.5,
@@ -128,14 +128,21 @@ default_builder_dict = {
         os.path.join("..", "yaml_files", "basically_empty_overrides.yaml")
     ),
 }
+#%%
 
-submit_pks = []
+# ! Submission of LMPO-1 configurations with option 1
+submission_group_label = "testing/lmpo-1/option1"
+# submission_group = Group(submission_group_label)
+# submission_group.store()
+submission_group = load_group(submission_group_label)
 
-for itertuple in lmpo_config_df.itertuples():
+for itertuple in list(lmpo_config_df.itertuples())[-1:]:
+
     # print(type(itertuple))
     # print(itertuple)
     structuredata = itertuple.structuredata
-    print(structuredata.get_formula(mode="reduce"))
+    formula = structuredata.get_formula(mode="reduce")
+    print(formula)
 
     # ? Differentiate different Mn sites
     structuredata = change_atom_names(
@@ -156,48 +163,135 @@ for itertuple in lmpo_config_df.itertuples():
     # ? Populate builder
     builder_dict = default_builder_dict.copy()
     builder_dict["hubbard_structure"] = hubbard_structure
-
     builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(**builder_dict)
+
+    # ? Modify builder, in this case for SS
     _ = builder.pop("relax", None)
     builder.meta_convergence = Bool(False)
     builder.max_iterations = Int(1)
-    # builder.scf.pseudo_family = Str("SSSP/1.2/PBEsol/efficiency")
-    # builder.scf.pw.pseudos = Str("SSSP/1.2/PBEsol/efficiency")
-    # ! This might fail due to absence of Li in the last config
-    builder.scf.pw.parameters["SYSTEM"] = mag_dict
+    if "Li" in formula:
+        builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
+    else:
+        noli_mag_dict = afm_mag_dict.copy()
+        noli_mag_dict["starting_magnetization"].pop("Li")
+        builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
 
     # print(builder)
     scf_dict = builder.scf.pw.parameters.get_dict()
     hubbard_dict = builder.hubbard.hp.parameters.get_dict()
 
-    print(json.dumps(scf_dict, sort_keys=False, indent=4))
+    # print(json.dumps(scf_dict, sort_keys=False, indent=4))
     # print(json.dumps(relax_dict, sort_keys=False, indent=4))
-    print(json.dumps(hubbard_dict, sort_keys=False, indent=4))
-    pbesol_test_submit = submit(builder)
-    print(pbesol_test_submit.pk)
-    # pbesol_test_submit_pk = 5170
-    break
+    # print(json.dumps(hubbard_dict, sort_keys=False, indent=4))
 
-# hubbard_structure = None
+    lmpo_1_ss_submit = submit(builder)
+    submission_group.add_nodes(lmpo_1_ss_submit)
 
-# true_ss_builder = deepcopy(default_builder)
+#%%
+# ! Submission of LMPO-1 configurations with option 2
+submission_group_label = "testing/lmpo-1/option2"
+# submission_group = Group(submission_group_label)
+# submission_group.store()
+submission_group = load_group(submission_group_label)
 
-# print(type(default_builder))
-# _ = default_builder.pop("relax", None)
-# default_builder.meta_convergence = Bool(False)
-# default_builder.max_iterations = Int(1)
+for itertuple in list(lmpo_config_df.itertuples()):
 
-# %%
-# print(lmpo_config_df.shape)
-# print(lmpo_config_df.columns)
-# lmpo_config_df[[_ for _ in lmpo_config_df.columns if "structure" not in _]]
-# %%
-# submission_group_label = 'workchains/test2/hydrogen100/50_75'
-submission_group_label = "testing/lmpo-1/option1/PBE"
-submission_group = Group(submission_group_label)
-submission_group.store()
+    # print(type(itertuple))
+    # print(itertuple)
+    structuredata = itertuple.structuredata
+    formula = structuredata.get_formula(mode="reduce")
+    print(formula)
 
-#    wc_node = submit(builder)
-# workchain_group.add_nodes(wc_node)
-# print(f'Submitted work chain for {structure.get_formula()} with PK = {wc_node.pk}.')
-# print(f'Created non-existent group {submission_group_label} with PK = {workchain_group.pk}.')
+    # ? Differentiate different Mn sites
+    structuredata = change_atom_names(
+        structure_data=structuredata, relabel_dict=relabel_dict
+    )
+
+    # ! All of this duplicated right now. Store structuredata and hubbard_structure in df or class instance.
+    # ? Create HubbardStructure from StructureData with initialized U/V
+    hubbard_structure = HubbardStructureData(structure=structuredata)
+    hubbard_structure.initialize_onsites_hubbard("Mn1", "3d", 4.5618)
+    hubbard_structure.initialize_onsites_hubbard("Mn2", "3d", 4.5618)
+    hubbard_structure.initialize_intersites_hubbard(
+        "Mn1", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+    )
+    hubbard_structure.initialize_intersites_hubbard(
+        "Mn2", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+    )
+
+    # ? Populate builder
+    builder_dict = default_builder_dict.copy()
+    builder_dict["hubbard_structure"] = hubbard_structure
+    option2_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+        **builder_dict
+    )
+
+    # ? Modify builder, in this case for SS
+    _ = option2_builder.pop("relax", None)
+    # builder.meta_convergence = Bool(False)
+    # builder.max_iterations = Int(1)
+    if "Li" in formula:
+        option2_builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
+    else:
+        noli_mag_dict = deepcopy(afm_mag_dict)
+        _ = noli_mag_dict["starting_magnetization"].pop("Li")
+        option2_builder.scf.pw.parameters["SYSTEM"] = noli_mag_dict
+
+    lmpo_2_ss_submit = submit(option2_builder)
+    submission_group.add_nodes(lmpo_2_ss_submit)
+
+#%%
+
+# ! Submission of LMPO-1 configurations with option 3
+submission_group_label = "testing/lmpo-1/option3"
+try:
+    submission_group = Group(submission_group_label)
+    submission_group.store()
+except:
+    submission_group = load_group(submission_group_label)
+
+for itertuple in list(lmpo_config_df.itertuples()):
+
+    # print(type(itertuple))
+    # print(itertuple)
+    structuredata = itertuple.structuredata
+    formula = structuredata.get_formula(mode="reduce")
+    print(formula)
+
+    # ? Differentiate different Mn sites
+    structuredata = change_atom_names(
+        structure_data=structuredata, relabel_dict=relabel_dict
+    )
+
+    # ! All of this duplicated right now. Store structuredata and hubbard_structure in df or class instance.
+    # ? Create HubbardStructure from StructureData with initialized U/V
+    hubbard_structure = HubbardStructureData(structure=structuredata)
+    hubbard_structure.initialize_onsites_hubbard("Mn1", "3d", 4.5618)
+    hubbard_structure.initialize_onsites_hubbard("Mn2", "3d", 4.5618)
+    hubbard_structure.initialize_intersites_hubbard(
+        "Mn1", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+    )
+    hubbard_structure.initialize_intersites_hubbard(
+        "Mn2", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+    )
+
+    # ? Populate builder
+    builder_dict = default_builder_dict.copy()
+    builder_dict["hubbard_structure"] = hubbard_structure
+    option3_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+        **builder_dict
+    )
+
+    # ? Modify builder, in this case for SS
+    # _ = option3_builder.pop("relax", None)
+    # builder.meta_convergence = Bool(False)
+    # builder.max_iterations = Int(1)
+    if "Li" in formula:
+        option3_builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
+    else:
+        noli_mag_dict = deepcopy(afm_mag_dict)
+        _ = noli_mag_dict["starting_magnetization"].pop("Li")
+        option3_builder.scf.pw.parameters["SYSTEM"] = noli_mag_dict
+
+    lmpo_3_submit = submit(option3_builder)
+    submission_group.add_nodes(lmpo_3_submit)
