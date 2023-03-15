@@ -5,8 +5,10 @@ tolerance_intersite: 0.01
 skip_first_relax: True
 scf:
   clean_workdir: False
+  pseudo_family: 'SSSP/1.2/PBEsol/efficiency'
 relax:
   clean_workdir: False
+  pseudo_family: 'SSSP/1.2/PBEsol/efficiency'
 hubbard:
   clean_workdir: False
   hp:
