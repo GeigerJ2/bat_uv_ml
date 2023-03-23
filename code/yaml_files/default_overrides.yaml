@@ -3,19 +3,22 @@ meta_convergence: True
 tolerance_onsite: 0.1
 tolerance_intersite: 0.01
 skip_first_relax: True
+parallelize_atoms: True
 scf:
   clean_workdir: False
-  pseudo_family: 'SSSP/1.2/PBEsol/efficiency'
+  pseudo_family: "SSSP/1.2/PBEsol/efficiency"
   pw:
+    kpoints_distance: 0.6
     settings:
       cmdline:
         - "-nk"
         - "4"
 relax:
   clean_workdir: False
-  pseudo_family: 'SSSP/1.2/PBEsol/efficiency'
+  pseudo_family: "SSSP/1.2/PBEsol/efficiency"
   base:
     pw:
+      kpoints_distance: 0.3
       parameters:
         CONTROL:
           nstep: 200

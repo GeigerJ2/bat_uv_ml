@@ -12,11 +12,14 @@ from pprint import pprint
 import pandas as pd
 from aiida import load_profile
 from aiida.engine import submit
-from aiida.orm import Bool, Group, Int, Str, load_code, load_group, load_node
+from aiida.orm import (Bool, Group, Int, Str, StructureData, load_code,
+                       load_group, load_node)
+from aiida.orm.nodes.data.array.kpoints import KpointsData
 from aiida_quantumespresso.common.types import SpinType
 from aiida_quantumespresso.data.hubbard_structure import HubbardStructureData
 from aiida_quantumespresso.workflows.pw.base import PwBaseWorkChain
-from aiida_quantumespresso_hp.workflows.hubbard import SelfConsistentHubbardWorkChain
+from aiida_quantumespresso_hp.workflows.hubbard import \
+    SelfConsistentHubbardWorkChain
 from ase import Atoms
 from ase.visualize import view
 from pybat import Cathode
@@ -68,7 +71,6 @@ lmpo_cathode = Cathode.from_structure(lmpo_pmg)
 
 import pyconfsamp.core
 from pybat.core import Cathode
-
 # %%
 from pymatgen.core import Structure
 
@@ -103,16 +105,16 @@ lmpo_config_df = lmpo_config_class.data_df
 
 # %%
 relabel_dict = {
-    0: "Mn1",
-    1: "Mn1",
-    2: "Mn2",
-    3: "Mn2",
+    0: "Mn0",
+    1: "Mn0",
+    2: "Mn1",
+    3: "Mn1",
 }
 
 afm_mag_dict = {
     "starting_magnetization": {
-        "Mn1": 0.5,
-        "Mn2": -0.5,
+        "Mn0": 0.5,
+        "Mn1": -0.5,
         "O": 0.0,
         "P": 0.0,
         "Li": 0.0,
@@ -124,9 +126,7 @@ default_builder_dict = {
     "pw_code": pw_code,
     "hp_code": hp_code,
     "protocol": "moderate",
-    "overrides": Path(
-        os.path.join("..", "yaml_files", "basically_empty_overrides.yaml")
-    ),
+    "overrides": Path(os.path.join("..", "yaml_files", "default_overrides.yaml")),
 }
 #%%
 
@@ -136,7 +136,7 @@ submission_group_label = "testing/lmpo-1/option1"
 # submission_group.store()
 submission_group = load_group(submission_group_label)
 
-for itertuple in list(lmpo_config_df.itertuples())[-1:]:
+for itertuple in list(lmpo_config_df.itertuples())[-2:]:
 
     # print(type(itertuple))
     # print(itertuple)
@@ -172,7 +172,7 @@ for itertuple in list(lmpo_config_df.itertuples())[-1:]:
     if "Li" in formula:
         builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
     else:
-        noli_mag_dict = afm_mag_dict.copy()
+        noli_mag_dict = deepcopy(afm_mag_dict)
         noli_mag_dict["starting_magnetization"].pop("Li")
         builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
 
@@ -180,65 +180,60 @@ for itertuple in list(lmpo_config_df.itertuples())[-1:]:
     scf_dict = builder.scf.pw.parameters.get_dict()
     hubbard_dict = builder.hubbard.hp.parameters.get_dict()
 
-    # print(json.dumps(scf_dict, sort_keys=False, indent=4))
-    # print(json.dumps(relax_dict, sort_keys=False, indent=4))
-    # print(json.dumps(hubbard_dict, sort_keys=False, indent=4))
-
     lmpo_1_ss_submit = submit(builder)
     submission_group.add_nodes(lmpo_1_ss_submit)
 
 #%%
 # ! Submission of LMPO-1 configurations with option 2
+from operator import itemgetter
+
+custom_slice = itemgetter(2, 3, 5, 6)
 submission_group_label = "testing/lmpo-1/option2"
-# submission_group = Group(submission_group_label)
-# submission_group.store()
 submission_group = load_group(submission_group_label)
 
 for itertuple in list(lmpo_config_df.itertuples()):
 
-    # print(type(itertuple))
-    # print(itertuple)
     structuredata = itertuple.structuredata
     formula = structuredata.get_formula(mode="reduce")
-    print(formula)
+    print(itertuple.Index, formula)
+    if itertuple.Index in [2, 3, 5, 6]:
 
-    # ? Differentiate different Mn sites
-    structuredata = change_atom_names(
-        structure_data=structuredata, relabel_dict=relabel_dict
-    )
+        # ? Differentiate different Mn sites
+        structuredata = change_atom_names(
+            structure_data=structuredata, relabel_dict=relabel_dict
+        )
 
-    # ! All of this duplicated right now. Store structuredata and hubbard_structure in df or class instance.
-    # ? Create HubbardStructure from StructureData with initialized U/V
-    hubbard_structure = HubbardStructureData(structure=structuredata)
-    hubbard_structure.initialize_onsites_hubbard("Mn1", "3d", 4.5618)
-    hubbard_structure.initialize_onsites_hubbard("Mn2", "3d", 4.5618)
-    hubbard_structure.initialize_intersites_hubbard(
-        "Mn1", "3d", "O", "2p", 0.0001, number_of_neighbours=7
-    )
-    hubbard_structure.initialize_intersites_hubbard(
-        "Mn2", "3d", "O", "2p", 0.0001, number_of_neighbours=7
-    )
+        # ! All of this duplicated right now. Store structuredata and hubbard_structure in df or class instance.
+        # ? Create HubbardStructure from StructureData with initialized U/V
+        hubbard_structure = HubbardStructureData(structure=structuredata)
+        hubbard_structure.initialize_onsites_hubbard("Mn1", "3d", 4.5)
+        hubbard_structure.initialize_onsites_hubbard("Mn2", "3d", 4.6)
+        hubbard_structure.initialize_intersites_hubbard(
+            "Mn1", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+        )
+        hubbard_structure.initialize_intersites_hubbard(
+            "Mn2", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+        )
 
-    # ? Populate builder
-    builder_dict = default_builder_dict.copy()
-    builder_dict["hubbard_structure"] = hubbard_structure
-    option2_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
-        **builder_dict
-    )
+        # ? Populate builder
+        builder_dict = default_builder_dict.copy()
+        builder_dict["hubbard_structure"] = hubbard_structure
+        option2_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+            **builder_dict
+        )
 
-    # ? Modify builder, in this case for SS
-    _ = option2_builder.pop("relax", None)
-    # builder.meta_convergence = Bool(False)
-    # builder.max_iterations = Int(1)
-    if "Li" in formula:
-        option2_builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
-    else:
-        noli_mag_dict = deepcopy(afm_mag_dict)
-        _ = noli_mag_dict["starting_magnetization"].pop("Li")
-        option2_builder.scf.pw.parameters["SYSTEM"] = noli_mag_dict
+        # ? Modify builder, in this case for SS
+        _ = option2_builder.pop("relax", None)
 
-    lmpo_2_ss_submit = submit(option2_builder)
-    submission_group.add_nodes(lmpo_2_ss_submit)
+        if "Li" in formula:
+            option2_builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
+        else:
+            noli_mag_dict = deepcopy(afm_mag_dict)
+            _ = noli_mag_dict["starting_magnetization"].pop("Li")
+            option2_builder.scf.pw.parameters["SYSTEM"] = noli_mag_dict
+
+        lmpo_2_ss_submit = submit(option2_builder)
+        submission_group.add_nodes(lmpo_2_ss_submit)
 
 #%%
 
@@ -250,7 +245,7 @@ try:
 except:
     submission_group = load_group(submission_group_label)
 
-for itertuple in list(lmpo_config_df.itertuples()):
+for itertuple in list(lmpo_config_df.itertuples())[:1]:
 
     # print(type(itertuple))
     # print(itertuple)
@@ -266,13 +261,13 @@ for itertuple in list(lmpo_config_df.itertuples()):
     # ! All of this duplicated right now. Store structuredata and hubbard_structure in df or class instance.
     # ? Create HubbardStructure from StructureData with initialized U/V
     hubbard_structure = HubbardStructureData(structure=structuredata)
+    hubbard_structure.initialize_onsites_hubbard("Mn0", "3d", 4.5618)
     hubbard_structure.initialize_onsites_hubbard("Mn1", "3d", 4.5618)
-    hubbard_structure.initialize_onsites_hubbard("Mn2", "3d", 4.5618)
     hubbard_structure.initialize_intersites_hubbard(
-        "Mn1", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+        "Mn0", "3d", "O", "2p", 0.0001, number_of_neighbours=7
     )
     hubbard_structure.initialize_intersites_hubbard(
-        "Mn2", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+        "Mn1", "3d", "O", "2p", 0.0001, number_of_neighbours=7
     )
 
     # ? Populate builder
@@ -295,3 +290,33 @@ for itertuple in list(lmpo_config_df.itertuples()):
 
     lmpo_3_submit = submit(option3_builder)
     submission_group.add_nodes(lmpo_3_submit)
+
+#%%
+
+devel_structuredata = lmpo_config_df["structuredata"].values[0]
+
+devel_hubbard_structure = HubbardStructureData(structure=devel_structuredata)
+devel_hubbard_structure.initialize_onsites_hubbard("Mn", "3d", 4.5)
+devel_hubbard_structure.initialize_intersites_hubbard(
+    "Mn", "3d", "O", "2p", 0.0001, number_of_neighbours=7
+)
+#%%
+
+builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+    pw_code=pw_code,
+    hp_code=hp_code,
+    protocol="moderate",
+    overrides=Path(os.path.join("..", "yaml_files", "default_overrides.yaml")),
+    hubbard_structure=devel_hubbard_structure,
+)
+
+qpoints = KpointsData()
+qpoints.set_cell_from_structure(structuredata=devel_hubbard_structure)
+qpoints.set_kpoints_mesh_from_density(distance=1.2)
+
+builder.hubbard.hp.qpoints = qpoints
+devel_hubbard_structure.cell
+
+print(builder.hubbard.hp.qpoints.get_kpoints_mesh())
+print(builder.hubbard.hp.qpoints.get_kpoints_mesh())
+#%%
