@@ -30,6 +30,7 @@ relax:
 hubbard:
   clean_workdir: False
   hp:
+    qpoints_distance: 0.8
     settings:
       cmdline:
         - "-nk"

@@ -172,7 +172,7 @@ for itertuple in list(lmpo_config_df.itertuples())[-2:]:
     if "Li" in formula:
         builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
     else:
-        noli_mag_dict = deepcopy(afm_mag_dict)
+        # noli_mag_dict = deepcopy(afm_mag_dict)
         noli_mag_dict["starting_magnetization"].pop("Li")
         builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
 
@@ -228,7 +228,7 @@ for itertuple in list(lmpo_config_df.itertuples()):
         if "Li" in formula:
             option2_builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
         else:
-            noli_mag_dict = deepcopy(afm_mag_dict)
+            # noli_mag_dict = deepcopy(afm_mag_dict)
             _ = noli_mag_dict["starting_magnetization"].pop("Li")
             option2_builder.scf.pw.parameters["SYSTEM"] = noli_mag_dict
 
@@ -284,7 +284,7 @@ for itertuple in list(lmpo_config_df.itertuples())[:1]:
     if "Li" in formula:
         option3_builder.scf.pw.parameters["SYSTEM"] = afm_mag_dict
     else:
-        noli_mag_dict = deepcopy(afm_mag_dict)
+        # noli_mag_dict = deepcopy(afm_mag_dict)
         _ = noli_mag_dict["starting_magnetization"].pop("Li")
         option3_builder.scf.pw.parameters["SYSTEM"] = noli_mag_dict
 

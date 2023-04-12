@@ -3,7 +3,7 @@ meta_convergence: True
 tolerance_onsite: 0.1
 tolerance_intersite: 0.01
 skip_first_relax: True
-parallelize_atoms: False
+parallelize_atoms: True
 scf:
   clean_workdir: False
   pseudo_family: "SSSP/1.2/PBEsol/efficiency"

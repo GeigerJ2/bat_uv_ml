@@ -3,28 +3,20 @@ from IPython.core.interactiveshell import InteractiveShell
 
 InteractiveShell.ast_node_interactivity = "all"
 import os
-from copy import deepcopy
 from pathlib import Path
 
 import pandas as pd
 import pyconfsamp.core
 from aiida import load_profile
 from aiida.engine import submit
-from aiida.orm import (
-    Bool,
-    Group,
-    Int,
-    Str,
-    StructureData,
-    load_code,
-    load_group,
-    load_node,
-)
+from aiida.orm import (Bool, Group, Int, Str, StructureData, load_code,
+                       load_group, load_node)
 from aiida.orm.nodes.data.array.kpoints import KpointsData
 from aiida_quantumespresso.common.types import SpinType
 from aiida_quantumespresso.data.hubbard_structure import HubbardStructureData
 from aiida_quantumespresso.workflows.pw.base import PwBaseWorkChain
-from aiida_quantumespresso_hp.workflows.hubbard import SelfConsistentHubbardWorkChain
+from aiida_quantumespresso_hp.workflows.hubbard import \
+    SelfConsistentHubbardWorkChain
 from ase import Atoms
 from ase.visualize import view
 from pybat import Cathode
@@ -184,7 +176,7 @@ def prepare_builder(
             number_of_neighbours=num_neighbors,
         )
 
-    builder_dict_ = deepcopy(builder_dict)
+    # builder_dict_ = deepcopy(builder_dict)
     builder_dict_["hubbard_structure"] = hubbard_structure
     builder_ = SelfConsistentHubbardWorkChain.get_builder_from_protocol(**builder_dict_)
 
@@ -355,5 +347,5 @@ for structure_data in structure_datas:
 #         lmpo_2_ss_submit = submit(option2_builder)
 #         submission_group.add_nodes(lmpo_2_ss_submit)
 
-#%%
+# %%
 print("test")
