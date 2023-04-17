@@ -12,18 +12,25 @@ from pprint import pprint
 import pandas as pd
 from aiida import load_profile
 from aiida.engine import submit
-from aiida.orm import (Bool, Group, Int, Str, StructureData, load_code,
-                       load_group, load_node)
+from aiida.orm import (
+    Bool,
+    Group,
+    Int,
+    Str,
+    StructureData,
+    load_code,
+    load_group,
+    load_node,
+)
 from aiida.orm.nodes.data.array.kpoints import KpointsData
 from aiida_quantumespresso.common.types import SpinType
 from aiida_quantumespresso.data.hubbard_structure import HubbardStructureData
 from aiida_quantumespresso.workflows.pw.base import PwBaseWorkChain
-from aiida_quantumespresso_hp.workflows.hubbard import \
-    SelfConsistentHubbardWorkChain
+from aiida_quantumespresso_hp.workflows.hubbard import SelfConsistentHubbardWorkChain
 from ase import Atoms
 from ase.visualize import view
 from pybat import Cathode
-from pyconfsamp.core import change_atom_names
+from pyconfsamp.core import change_atom_names_same_symbol
 from pymatgen.io.ase import AseAtomsAdaptor
 
 # from aiida.orm import UpfData, UpfFamily
@@ -33,8 +40,8 @@ GLOBAL_SYMPREC = 1e-5
 
 # %%
 load_profile()
-pw_code = load_code(2182)
-hp_code = load_code(2183)
+pw_code = load_code(24946)
+hp_code = load_code(24947)
 
 # %% [markdown]
 # ### Read in fully lithiated structures
@@ -71,6 +78,7 @@ lmpo_cathode = Cathode.from_structure(lmpo_pmg)
 
 import pyconfsamp.core
 from pybat.core import Cathode
+
 # %%
 from pymatgen.core import Structure
 
@@ -128,7 +136,7 @@ default_builder_dict = {
     "protocol": "moderate",
     "overrides": Path(os.path.join("..", "yaml_files", "default_overrides.yaml")),
 }
-#%%
+# %%
 
 # ! Submission of LMPO-1 configurations with option 1
 submission_group_label = "testing/lmpo-1/option1"
@@ -137,7 +145,6 @@ submission_group_label = "testing/lmpo-1/option1"
 submission_group = load_group(submission_group_label)
 
 for itertuple in list(lmpo_config_df.itertuples())[-2:]:
-
     # print(type(itertuple))
     # print(itertuple)
     structuredata = itertuple.structuredata
@@ -183,7 +190,7 @@ for itertuple in list(lmpo_config_df.itertuples())[-2:]:
     lmpo_1_ss_submit = submit(builder)
     submission_group.add_nodes(lmpo_1_ss_submit)
 
-#%%
+# %%
 # ! Submission of LMPO-1 configurations with option 2
 from operator import itemgetter
 
@@ -192,12 +199,10 @@ submission_group_label = "testing/lmpo-1/option2"
 submission_group = load_group(submission_group_label)
 
 for itertuple in list(lmpo_config_df.itertuples()):
-
     structuredata = itertuple.structuredata
     formula = structuredata.get_formula(mode="reduce")
     print(itertuple.Index, formula)
     if itertuple.Index in [2, 3, 5, 6]:
-
         # ? Differentiate different Mn sites
         structuredata = change_atom_names(
             structure_data=structuredata, relabel_dict=relabel_dict
@@ -235,7 +240,7 @@ for itertuple in list(lmpo_config_df.itertuples()):
         lmpo_2_ss_submit = submit(option2_builder)
         submission_group.add_nodes(lmpo_2_ss_submit)
 
-#%%
+# %%
 
 # ! Submission of LMPO-1 configurations with option 3
 submission_group_label = "testing/lmpo-1/option3"
@@ -246,7 +251,6 @@ except:
     submission_group = load_group(submission_group_label)
 
 for itertuple in list(lmpo_config_df.itertuples())[:1]:
-
     # print(type(itertuple))
     # print(itertuple)
     structuredata = itertuple.structuredata
@@ -291,7 +295,7 @@ for itertuple in list(lmpo_config_df.itertuples())[:1]:
     lmpo_3_submit = submit(option3_builder)
     submission_group.add_nodes(lmpo_3_submit)
 
-#%%
+# %%
 
 devel_structuredata = lmpo_config_df["structuredata"].values[0]
 
@@ -300,7 +304,7 @@ devel_hubbard_structure.initialize_onsites_hubbard("Mn", "3d", 4.5)
 devel_hubbard_structure.initialize_intersites_hubbard(
     "Mn", "3d", "O", "2p", 0.0001, number_of_neighbours=7
 )
-#%%
+# %%
 
 builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
     pw_code=pw_code,
@@ -319,4 +323,4 @@ devel_hubbard_structure.cell
 
 print(builder.hubbard.hp.qpoints.get_kpoints_mesh())
 print(builder.hubbard.hp.qpoints.get_kpoints_mesh())
-#%%
+# %%

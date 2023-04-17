@@ -59,12 +59,12 @@ MAG_DICT = {
     # "nspin": 2,
 }
 
-CONFIG_DICT = {
-    "cation_list": ["Li", "Vac"],
-    "concentration_restrictions": {"Li": (0, 1)},
-    "max_configurations": None,
-    "symprec": GLOBAL_SYMPREC,
-}
+# CONFIG_DICT = {
+#     "cation_list": ["Li", "Vac"],
+#     "concentration_restrictions": {"Li": (0, 1)},
+#     "max_configurations": None,
+#     "symprec": GLOBAL_SYMPREC,
+# }
 
 HUBBARD_DICT = {
     "Mn": ("3d", 5.5),  # ? Average between 4.6 and 6.6
