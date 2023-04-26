@@ -1,3 +1,4 @@
+---
 clean_workdir: false
 meta_convergence: true
 tolerance_onsite: 0.1
@@ -5,34 +6,27 @@ tolerance_intersite: 0.01
 skip_first_relax: true
 scf:
   pseudo_family: "SSSP/1.2/PBEsol/efficiency"
-
   pw:
     parameters:
       ELECTRONS:
         electron_maxstep: 200
-    # settings:
-    #   cmdline:
-    #     - "-nk"
-    #     - "4"
 relax:
   pseudo_family: "SSSP/1.2/PBEsol/efficiency"
+  clean_workdir: false
   base:
     pw:
       parameters:
         ELECTRONS:
           electron_maxstep: 200
-      # settings:
-      #   cmdline:
-      #     - "-nk"
-      #     - "4"
 hubbard:
+  clean_workdir: true
   parallelize_atoms: true
-  parallelize_qpoints: true
+  parallelize_qpoints: false
   hp:
-    parameters:
-      INPUTHP:
-        dist_thr: 0.001
+    INPUTHP:
+      dist_thr: 0.005
     settings:
+      parent_folder_symlink: true
       cmdline:
         - "-nk"
-        - "8"
+        - "16"

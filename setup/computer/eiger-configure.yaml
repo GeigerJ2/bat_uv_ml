@@ -1,0 +1,6 @@
+username: jgeiger
+key_filename: /home/jgeiger/.ssh/id_ed25519
+proxy_command: ''
+proxy_jump: jgeiger@ela.cscs.ch
+safe_interval: 10.0
+

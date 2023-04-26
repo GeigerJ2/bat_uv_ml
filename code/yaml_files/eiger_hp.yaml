@@ -1,0 +1,10 @@
+label: qe-7.2-hp
+description: Quantum ESPRESSO hp.x v7.2 - Custom compilation with CpeIntel v21.12
+default_calc_job_plugin: quantumespresso.hp
+computer: eiger
+filepath_executable: /store/marvel/mr32/src/qe-7.2/bin/hp.x
+prepend_text: |+
+  module load cpeIntel libxc
+
+  export OMP_NUM_THREADS=1
+append_text: " "

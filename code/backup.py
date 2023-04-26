@@ -262,3 +262,63 @@ for structure_data in structure_datas:
 # ! option2
 # _ = option2_builder.pop("relax", None)
 # ! option3
+# %%
+# red_formula = pmg_structure.as_ordered_structure().composition.reduced_formula
+# try:
+#     ion_number = int(
+#         re.search(
+#             "{}(\d+)".format(working_ion),
+#             red_formula,
+#         )
+#         .group()
+#         .replace(working_ion, "")
+#     )
+# except AttributeError:
+#     ion_number = 0
+
+# return ion_number
+
+# %% # ? Run full stuff for LMPO
+# importlib.reload(pyconfsamp.core)
+#
+# lmpo_config_class = pyconfsamp.core.ConfigClass()
+# lmpo_sd = StructureData(ase=lmpo_ase)
+#
+# # lmpo_pmg_from_cathode = lmpo_cathode.as_ordered_structure()
+# lmpo_config_class.short_name = "LMPO"
+# lmpo_config_class.add_structuredata(lmpo_sd)
+# lmpo_config_class.cell_size = 1
+#
+# # ? Prepare dictionary with specification of the configurations to be created
+# # # ! Here was the error. Mn actually comes first, but index 0-4 was being treated as Li
+# # # ! Another annoying issue is that .formula of pymatgen returns it sorted alphabetically it seems
+# symbol_list = lmpo_ase.get_chemical_symbols()
+# lmpo_config_dict = dict(
+#     # substitution_sites=list(
+#     #     range(symbol_list.index("Li"), len(symbol_list) - symbol_list[::-1].index("Li"))
+#     # ),
+#     cation_list=["Li", "Vac"],
+#     concentration_restrictions={"Li": (0, 1)},
+#     max_configurations=None,
+#     symprec=GLOBAL_SYMPREC,
+# )
+#
+# # ? Generate Configurations
+# lmpo_config_class.generate_configs(config_dict=lmpo_config_dict)
+# # ? Generate Hubbards
+# lmpo_config_class.generate_hubbards(hubbard_dict=HUBBARD_DICT)
+# # ? Generate Builders
+# lmpo_config_class.generate_builders(builder_dict=DEFAULT_BUILDER_DICT, relax_option=1)
+# # ? Submit Builders
+# lmpo_config_class.submit_builders(
+#     group_label="eiger_test/lmpo-1/option1/fm",
+#     parallelization="atoms",
+#     clean_workdir=True,
+# )
+# # ? Create df which is linked to the class instance
+# lmpo_config_df = lmpo_config_class.generate_df()
+# # ? Save the df as a pickle file
+# config_class.pickle_me(
+#     file_path="/home/jgeiger/projects/bat_uv_ml/data",
+#     file_name=group_label.replace("/", "-"),
+# )

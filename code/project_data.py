@@ -1,11 +1,27 @@
 import os
 from pathlib import Path
 
-from aiida.orm import load_code
+from aiida import load_profile
+from aiida.orm import load_code, load_node
 from aiida_quantumespresso.common.types import SpinType
+
+load_profile()
+
+PROJECT_DIR = "/home/jgeiger/projects/bat_uv_ml/code"
+DATA_DIR = os.path.join(PROJECT_DIR, "data")
+CODE_DIR = os.path.join(PROJECT_DIR, "code")
+FIGS_DIR = os.path.join(PROJECT_DIR, "figs")
 
 PW_CODE_MN4 = load_code(24946)
 HP_CODE_MN4 = load_code(24947)
+PW_CODE_LUMI = load_code(2182)
+HP_CODE_LUMI = load_code(2183)
+PW_CODE_LOCAL = load_code(34982)
+HP_CODE_LOCAL = load_code(34983)
+PW_CODE_EIGER = load_code(44762)
+HP_CODE_EIGER = load_code(44763)
+
+BATIO3_HUBBARD_DATA = load_node(19376)
 
 # ? Where to move global variables ideally?
 GLOBAL_SYMPREC = 1e-5
@@ -20,10 +36,10 @@ SORTING_DICT = {
 }
 
 DEFAULT_BUILDER_DICT = {
-    "pw_code": PW_CODE_MN4,
-    "hp_code": HP_CODE_MN4,
+    "pw_code": PW_CODE_EIGER,
+    "hp_code": HP_CODE_EIGER,
     "protocol": "moderate",
-    "overrides": Path(os.path.join("yaml_files", "minimal_overrides.yaml")),
+    "overrides": Path(os.path.join("yaml_files", "debug_overrides.yaml")),
     "spin_type": SpinType.COLLINEAR,
 }
 

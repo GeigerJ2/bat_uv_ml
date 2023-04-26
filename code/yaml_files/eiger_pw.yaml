@@ -1,0 +1,11 @@
+label: qe-7.2-pw
+description: Quantum ESPRESSO pw.x v7.2 - Custom compilation with CpeIntel v21.12
+default_calc_job_plugin: quantumespresso.pw
+computer: eiger
+filepath_executable: /store/marvel/mr32/src/qe-7.2/bin/pw.x
+prepend_text: |+
+
+  module load cpeIntel libxc
+
+  export OMP_NUM_THREADS=1
+append_text: " "
