@@ -322,3 +322,42 @@ for structure_data in structure_datas:
 #     file_path="/home/jgeiger/projects/bat_uv_ml/data",
 #     file_name=group_label.replace("/", "-"),
 # )
+
+# hubbard = Dict()
+# hubbard.parralelize_atoms = Bool(True)
+# lfpo_option3_builder.hubbard = hubbard # ! not valid
+# lfpo_option3_builder.hubbard["parallelize_atoms"] = Bool(True)  # ? valid
+
+# skip_first_relax_list = (True, False)
+# hubbard_parallelize_atoms_list = (Bool(True), Bool(False))
+# hubbard_parallelize_qpoints_list = (Bool(True), Bool(False))
+
+# counter = 0
+# for name, pk in list(zip(name_list, pk_list)):
+#     for skip_first_relax in skip_first_relax_list:
+#         for hubbard_parallelize_atoms in hubbard_parallelize_atoms_list:
+#             if hubbard_parallelize_atoms:
+#                 for hubbard_parallelize_qpoints in hubbard_parallelize_qpoints_list:
+#                     calc_label = "name: {}, sfr: {}, hpr: {}, hpq: {}".format(
+#                         name,
+#                         skip_first_relax,
+#                         hubbard_parallelize_atoms.value,
+#                         hubbard_parallelize_qpoints.value,
+#                     )
+#                     print(calc_label)
+#                     counter += 1
+#             else:
+#                 hubbard_parallelize_qpoints = Bool(False)
+#                 calc_label = "name: {}, sfr: {}, hpr: {}, hpq: {}".format(
+#                     name,
+#                     skip_first_relax,
+#                     hubbard_parallelize_atoms.value,
+#                     hubbard_parallelize_qpoints.value,
+#                 )
+#                 print(calc_label)
+#                 counter += 1
+
+# print(counter)
+
+# ? doesn't work as no IONS card in overrides, so no AttributeDict created here
+# option3_builder.relax.base.pw.parameters["IONS"]["ion_dynamics"] = Str("damp")

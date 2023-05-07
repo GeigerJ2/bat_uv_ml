@@ -14,8 +14,10 @@ FIGS_DIR = os.path.join(PROJECT_DIR, "figs")
 
 PW_CODE_MN4 = load_code(24946)
 HP_CODE_MN4 = load_code(24947)
-PW_CODE_LUMI = load_code(2182)
-HP_CODE_LUMI = load_code(2183)
+PW_CODE_LUMI = load_code(70053)
+HP_CODE_LUMI = load_code(70054)
+# PW_CODE_LUMI = load_code(2182)
+# HP_CODE_LUMI = load_code(2183)
 PW_CODE_LOCAL = load_code(34982)
 HP_CODE_LOCAL = load_code(34983)
 PW_CODE_EIGER = load_code(44762)
@@ -36,14 +38,14 @@ SORTING_DICT = {
 }
 
 DEFAULT_BUILDER_DICT = {
-    "pw_code": PW_CODE_EIGER,
-    "hp_code": HP_CODE_EIGER,
+    "pw_code": PW_CODE_LUMI,
+    "hp_code": HP_CODE_LUMI,
     "protocol": "moderate",
-    "overrides": Path(os.path.join("yaml_files", "debug_overrides.yaml")),
+    "overrides": Path(os.path.join("yaml_files", "low_thresh_overrides.yaml")),
     "spin_type": SpinType.COLLINEAR,
 }
 
-HUBBARD_DICT = {
+DEFAULT_HUBBARD_DICT = {
     "Mn": ("3d", 5.5),  # ? Average between 4.6 and 6.6
     "Fe": ("3d", 5.3),
     "Ni": ("3d", 8.6),

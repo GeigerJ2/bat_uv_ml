@@ -16,7 +16,7 @@ from project_data import (
     HUBBARD_DICT,
     SORTING_DICT,
 )
-from project_functions import run_full_sampling
+from project_functions import run_full_sampling, view_structure_from_pk
 
 # from aiida.orm import UpfData, UpfFamily
 
@@ -60,3 +60,5 @@ for option in (1, 2, 3):
         group_label="eiger_test/lmo-1/option{}/fm".format(option),
         submit_index=0,
     )
+
+# %%

@@ -1,8 +1,8 @@
-from aiida.orm import StructureData
+from aiida.orm import StructureData, load_node
+from aiida_pyconfsamp.core import ConfigClass
 from ase.atoms import Atoms
-from project_data import *
-from project_data import DEFAULT_BUILDER_DICT, GLOBAL_SYMPREC, HUBBARD_DICT
-from pyconfsamp.core import ConfigClass
+from ase.visualize import view
+from project_data import DEFAULT_BUILDER_DICT, DEFAULT_HUBBARD_DICT, GLOBAL_SYMPREC
 
 
 def run_full_sampling(
@@ -12,15 +12,11 @@ def run_full_sampling(
     group_label,
     relax_option,
     submit_index: int = None,
+    builder_dict: dict = DEFAULT_BUILDER_DICT,
 ):
     config_class = ConfigClass()
     # ! Does not take into account initial magmoms for now
-    # ? Don't need to do sorting anymore. Is done inside aiida-hp.
-    # ase_structure = Atoms(
-    #     sorted(ase_structure, key=lambda x: SORTING_DICT[x.symbol]),
-    #     cell=ase_structure.get_cell(),
-    #     pbc=True,
-    # )
+
     ase_structure.center()
     structuredata = StructureData(ase=ase_structure)
 
@@ -38,10 +34,10 @@ def run_full_sampling(
     # ? Generate Configurations
     config_class.generate_configs(config_dict=config_dict)
     # ? Generate Hubbards
-    config_class.generate_hubbards(hubbard_dict=HUBBARD_DICT)
+    config_class.generate_hubbards(hubbard_dict=DEFAULT_HUBBARD_DICT)
     # ? Generate Builders
     config_class.generate_builders(
-        builder_dict=DEFAULT_BUILDER_DICT,
+        builder_dict=builder_dict,
         relax_option=relax_option,
         parallelization="atoms",
         clean_workdir=False,
@@ -64,3 +60,13 @@ def run_full_sampling(
     # )
 
     return {"config_class": config_class, "config_df": config_df}
+
+
+def view_structure_from_pk(pk):
+    node = load_node(pk)
+    # ! Implement properly with isinstance
+    try:
+        ase_structure = node.inputs.hubbard_structure.get_ase()
+    except:
+        raise
+    view(ase_structure)

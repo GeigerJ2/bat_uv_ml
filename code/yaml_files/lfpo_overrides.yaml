@@ -1,0 +1,52 @@
+---
+clean_workdir: true
+meta_convergence: true
+tolerance_onsite: 0.1
+tolerance_intersite: 0.01
+max_iterations: 10
+skip_first_relax: false
+scf:
+  pseudo_family: "SSSP/1.2/PBEsol/efficiency"
+  max_iterations: 10
+  pw:
+    parameters:
+      ELECTRONS:
+        electron_maxstep: 600
+        mixing_mode: "local-TF"
+        # conv_thr: 1.0e-8
+relax:
+  pseudo_family: "SSSP/1.2/PBEsol/efficiency"
+  clean_workdir: true
+  meta_convergence_iterations: 10
+  base:
+    kpoints_distance: 0.4
+    max_iterations: 10
+    pw:
+      parameters:
+        CONTROL:
+          nstep: 200
+          # etot_conv_thr: 1.e-6
+          # forc_conv_thr: 1.e-5
+        ELECTRONS:
+          electron_maxstep: 600
+          mixing_mode: "local-TF"
+          # conv_thr: 1.0e-8
+        # IONS:
+        #   trust_radius_min: 1.0e-4
+        # trust_radius_max: 1.0e-2
+        # trust_radius_ini:
+        # bfgs_ndim: 8
+hubbard:
+  clean_workdir: false
+  parallelize_atoms: true
+  parallelize_qpoints: false
+  max_iterations: 10
+  hp:
+    parameters:
+      INPUTHP:
+        dist_thr: 0.01
+    settings:
+      parent_folder_symlink: true
+      cmdline:
+        - "-nk"
+        - "16"
