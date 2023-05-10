@@ -1,0 +1,1642 @@
+43407
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           43407
+uuid         4e66194e-57ba-4182-9126-a9467790bec0
+label
+description
+ctime        2023-04-20 17:45:30.988875+02:00
+mtime        2023-04-23 07:00:55.930836+02:00
+
+Inputs                    PK     Type
+------------------------  -----  --------------------
+hubbard
+    hp
+        code              24947  InstalledCode
+        parameters        43394  Dict
+        settings          43395  Dict
+    qpoints_distance      43396  Float
+    parallelize_atoms     43397  Bool
+    parallelize_qpoints   43398  Bool
+    clean_workdir         43399  Bool
+    max_iterations        43400  Int
+scf
+    pw
+        pseudos
+            Mn            5067   UpfData
+            O             5135   UpfData
+            P             5117   UpfData
+        code              24946  InstalledCode
+        parameters        43388  Dict
+        settings          43389  Dict
+    kpoints_distance      43390  Float
+    kpoints_force_parity  43391  Bool
+    clean_workdir         43392  Bool
+    max_iterations        43393  Int
+clean_workdir             43405  Bool
+hubbard_structure         43401  HubbardStructureData
+max_iterations            43406  Int
+meta_convergence          43404  Bool
+tolerance_intersite       43403  Float
+tolerance_onsite          43402  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  48101  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       43412  structure_reorder_kinds
+iteration_01_scf_smearing  43433  PwBaseWorkChain
+iteration_01_hp            43652  HpWorkChain
+CALL                       45712  structure_relabel_kinds
+iteration_02_scf_smearing  45717  PwBaseWorkChain
+iteration_02_hp            45921  HpWorkChain
+CALL                       46500  structure_relabel_kinds
+iteration_03_scf_smearing  46505  PwBaseWorkChain
+iteration_03_hp            46539  HpWorkChain
+CALL                       47117  structure_relabel_kinds
+iteration_04_scf_smearing  47122  PwBaseWorkChain
+iteration_04_hp            47133  HpWorkChain
+CALL                       47578  structure_relabel_kinds
+iteration_05_scf_smearing  47583  PwBaseWorkChain
+iteration_05_hp            47594  HpWorkChain
+CALL                       47740  structure_relabel_kinds
+iteration_06_scf_smearing  47745  PwBaseWorkChain
+iteration_06_hp            47756  HpWorkChain
+CALL                       47812  structure_relabel_kinds
+iteration_07_scf_smearing  47817  PwBaseWorkChain
+iteration_07_hp            47828  HpWorkChain
+CALL                       47884  structure_relabel_kinds
+iteration_08_scf_smearing  47889  PwBaseWorkChain
+iteration_08_hp            47900  HpWorkChain
+CALL                       47956  structure_relabel_kinds
+iteration_09_scf_smearing  47961  PwBaseWorkChain
+iteration_09_hp            47972  HpWorkChain
+CALL                       48028  structure_relabel_kinds
+iteration_10_scf_smearing  48033  PwBaseWorkChain
+iteration_10_hp            48044  HpWorkChain
+CALL                       48100  structure_relabel_kinds
+
+Log messages
+----------------------------------------------
+There are 44 log messages for this calculation
+Run 'verdi process report 43407' to see them
+################################################################################
+43515
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           43515
+uuid         cada7778-15bc-45cb-8688-19a9e547b6a3
+label
+description
+ctime        2023-04-20 17:45:39.224565+02:00
+mtime        2023-04-24 02:04:56.333072+02:00
+
+Inputs                    PK     Type
+------------------------  -----  --------------------
+hubbard
+    hp
+        code              24947  InstalledCode
+        parameters        43496  Dict
+        settings          43497  Dict
+    qpoints_distance      43498  Float
+    parallelize_atoms     43499  Bool
+    parallelize_qpoints   43501  Bool
+    clean_workdir         43502  Bool
+    max_iterations        43503  Int
+scf
+    pw
+        pseudos
+            Mn            5067   UpfData
+            O             5135   UpfData
+            P             5117   UpfData
+            Li            5066   UpfData
+        code              24946  InstalledCode
+        parameters        43489  Dict
+        settings          43490  Dict
+    kpoints_distance      43491  Float
+    kpoints_force_parity  43493  Bool
+    clean_workdir         43494  Bool
+    max_iterations        43495  Int
+clean_workdir             43509  Bool
+hubbard_structure         43504  HubbardStructureData
+max_iterations            43510  Int
+meta_convergence          43508  Bool
+tolerance_intersite       43507  Float
+tolerance_onsite          43505  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  48548  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       43580  structure_reorder_kinds
+iteration_01_scf_smearing  43587  PwBaseWorkChain
+iteration_01_hp            43673  HpWorkChain
+CALL                       45177  structure_relabel_kinds
+iteration_02_scf_smearing  45188  PwBaseWorkChain
+iteration_02_hp            45429  HpWorkChain
+CALL                       46250  structure_relabel_kinds
+iteration_03_scf_smearing  46255  PwBaseWorkChain
+iteration_03_hp            46340  HpWorkChain
+CALL                       46687  structure_relabel_kinds
+iteration_04_scf_smearing  46692  PwBaseWorkChain
+iteration_04_hp            46761  HpWorkChain
+CALL                       46936  structure_relabel_kinds
+iteration_05_scf_smearing  46941  PwBaseWorkChain
+iteration_05_hp            46952  HpWorkChain
+CALL                       47644  structure_relabel_kinds
+iteration_06_scf_smearing  47649  PwBaseWorkChain
+iteration_06_hp            47660  HpWorkChain
+CALL                       48131  structure_relabel_kinds
+iteration_07_scf_smearing  48136  PwBaseWorkChain
+iteration_07_hp            48147  HpWorkChain
+CALL                       48235  structure_relabel_kinds
+iteration_08_scf_smearing  48240  PwBaseWorkChain
+iteration_08_hp            48251  HpWorkChain
+CALL                       48339  structure_relabel_kinds
+iteration_09_scf_smearing  48344  PwBaseWorkChain
+iteration_09_hp            48355  HpWorkChain
+CALL                       48443  structure_relabel_kinds
+iteration_10_scf_smearing  48448  PwBaseWorkChain
+iteration_10_hp            48459  HpWorkChain
+CALL                       48547  structure_relabel_kinds
+
+Log messages
+----------------------------------------------
+There are 44 log messages for this calculation
+Run 'verdi process report 43515' to see them
+################################################################################
+43571
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           43571
+uuid         288aee1e-0a7c-4c9f-9891-8adc0a4efaae
+label
+description
+ctime        2023-04-20 17:45:45.298459+02:00
+mtime        2023-04-23 03:52:37.084127+02:00
+
+Inputs                    PK     Type
+------------------------  -----  --------------------
+hubbard
+    hp
+        code              24947  InstalledCode
+        parameters        43554  Dict
+        settings          43556  Dict
+    qpoints_distance      43557  Float
+    parallelize_atoms     43558  Bool
+    parallelize_qpoints   43559  Bool
+    clean_workdir         43560  Bool
+    max_iterations        43561  Int
+scf
+    pw
+        pseudos
+            Mn            5067   UpfData
+            O             5135   UpfData
+            P             5117   UpfData
+            Li            5066   UpfData
+        code              24946  InstalledCode
+        parameters        43547  Dict
+        settings          43548  Dict
+    kpoints_distance      43549  Float
+    kpoints_force_parity  43551  Bool
+    clean_workdir         43552  Bool
+    max_iterations        43553  Int
+clean_workdir             43568  Bool
+hubbard_structure         43563  HubbardStructureData
+max_iterations            43569  Int
+meta_convergence          43566  Bool
+tolerance_intersite       43565  Float
+tolerance_onsite          43564  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  47559  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             43601  structure_reorder_kinds
+iteration_01_scf_smearing        43609  PwBaseWorkChain
+iteration_01_scf_fixed_magnetic  43694  PwBaseWorkChain
+iteration_01_hp                  43707  HpWorkChain
+CALL                             44626  structure_relabel_kinds
+iteration_02_scf_smearing        44631  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  44919  PwBaseWorkChain
+iteration_02_hp                  45008  HpWorkChain
+CALL                             45742  structure_relabel_kinds
+iteration_03_scf_smearing        45747  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  45937  PwBaseWorkChain
+iteration_03_hp                  46020  HpWorkChain
+CALL                             46470  structure_relabel_kinds
+iteration_04_scf_smearing        46475  PwBaseWorkChain
+iteration_04_scf_fixed_magnetic  46518  PwBaseWorkChain
+iteration_04_hp                  46633  HpWorkChain
+CALL                             46835  structure_relabel_kinds
+iteration_05_scf_smearing        46840  PwBaseWorkChain
+iteration_05_scf_fixed_magnetic  46853  PwBaseWorkChain
+iteration_05_hp                  46874  HpWorkChain
+CALL                             47036  structure_relabel_kinds
+iteration_06_scf_smearing        47041  PwBaseWorkChain
+iteration_06_scf_fixed_magnetic  47054  PwBaseWorkChain
+iteration_06_hp                  47067  HpWorkChain
+CALL                             47213  structure_relabel_kinds
+iteration_07_scf_smearing        47218  PwBaseWorkChain
+iteration_07_scf_fixed_magnetic  47233  PwBaseWorkChain
+iteration_07_hp                  47244  HpWorkChain
+CALL                             47302  structure_relabel_kinds
+iteration_08_scf_smearing        47307  PwBaseWorkChain
+iteration_08_scf_fixed_magnetic  47320  PwBaseWorkChain
+iteration_08_hp                  47331  HpWorkChain
+CALL                             47387  structure_relabel_kinds
+iteration_09_scf_smearing        47392  PwBaseWorkChain
+iteration_09_scf_fixed_magnetic  47405  PwBaseWorkChain
+iteration_09_hp                  47416  HpWorkChain
+CALL                             47472  structure_relabel_kinds
+iteration_10_scf_smearing        47477  PwBaseWorkChain
+iteration_10_scf_fixed_magnetic  47490  PwBaseWorkChain
+iteration_10_hp                  47501  HpWorkChain
+CALL                             47558  structure_relabel_kinds
+
+Log messages
+----------------------------------------------
+There are 54 log messages for this calculation
+Run 'verdi process report 43571' to see them
+################################################################################
+58187
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           58187
+uuid         e01ad04d-def0-43ff-ae29-995df7851d79
+label
+description
+ctime        2023-04-28 11:09:23.441851+02:00
+mtime        2023-04-29 03:26:13.914224+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         44763  InstalledCode
+        parameters                   58175  Dict
+        settings                     58176  Dict
+    clean_workdir                    58177  Bool
+    qpoints_distance                 58178  Float
+    parallelize_atoms                58179  Bool
+    parallelize_qpoints              58180  Bool
+    max_iterations                   58181  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     44762  InstalledCode
+            parameters               58163  Dict
+        kpoints_distance             58164  Float
+        kpoints_force_parity         58165  Bool
+        max_iterations               58166  Int
+    clean_workdir                    58167  Bool
+    max_meta_convergence_iterations  58168  Int
+    meta_convergence                 58169  Bool
+    volume_convergence               58170  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         44762  InstalledCode
+        parameters                   58171  Dict
+    kpoints_distance                 58172  Float
+    kpoints_force_parity             58173  Bool
+    max_iterations                   58174  Int
+clean_workdir                        58185  Bool
+hubbard_structure                    55704  HubbardStructureData
+max_iterations                       58186  Int
+meta_convergence                     58184  Bool
+tolerance_intersite                  58183  Float
+tolerance_onsite                     58182  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  63379  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       58188  structure_reorder_kinds
+iteration_01_relax         58191  PwRelaxWorkChain
+iteration_01_scf_smearing  59724  PwBaseWorkChain
+iteration_01_scf_fixed     59755  PwBaseWorkChain
+iteration_01_hp            59780  HpWorkChain
+CALL                       60747  structure_relabel_kinds
+iteration_02_relax         60750  PwRelaxWorkChain
+iteration_02_scf_smearing  62207  PwBaseWorkChain
+iteration_02_scf_fixed     62221  PwBaseWorkChain
+iteration_02_hp            62232  HpWorkChain
+iteration_03_relax         62474  PwRelaxWorkChain
+iteration_03_scf_smearing  62890  PwBaseWorkChain
+iteration_03_scf_fixed     62917  PwBaseWorkChain
+iteration_03_hp            62976  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 58187' to see them
+################################################################################
+58640
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           58640
+uuid         536c2712-bc34-49a7-9de0-5a3a84329324
+label
+description
+ctime        2023-04-28 11:15:57.015328+02:00
+mtime        2023-04-29 03:23:46.649460+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         44763  InstalledCode
+        parameters                   58628  Dict
+        settings                     58629  Dict
+    clean_workdir                    58630  Bool
+    qpoints_distance                 58631  Float
+    parallelize_atoms                58632  Bool
+    parallelize_qpoints              58633  Bool
+    max_iterations                   58634  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     44762  InstalledCode
+            parameters               58616  Dict
+        kpoints_distance             58617  Float
+        kpoints_force_parity         58618  Bool
+        max_iterations               58619  Int
+    clean_workdir                    58620  Bool
+    max_meta_convergence_iterations  58621  Int
+    meta_convergence                 58622  Bool
+    volume_convergence               58623  Float
+scf
+    pw
+        pseudos
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+            Li                       5066   UpfData
+        code                         44762  InstalledCode
+        parameters                   58624  Dict
+    kpoints_distance                 58625  Float
+    kpoints_force_parity             58626  Bool
+    max_iterations                   58627  Int
+clean_workdir                        58638  Bool
+hubbard_structure                    55704  HubbardStructureData
+max_iterations                       58639  Int
+meta_convergence                     58637  Bool
+tolerance_intersite                  58636  Float
+tolerance_onsite                     58635  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  63354  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       58641  structure_reorder_kinds
+iteration_01_relax         58644  PwRelaxWorkChain
+iteration_01_scf_smearing  59721  PwBaseWorkChain
+iteration_01_scf_fixed     59747  PwBaseWorkChain
+iteration_01_hp            59769  HpWorkChain
+CALL                       60218  structure_relabel_kinds
+iteration_02_relax         60221  PwRelaxWorkChain
+iteration_02_scf_smearing  61915  PwBaseWorkChain
+iteration_02_scf_fixed     61928  PwBaseWorkChain
+iteration_02_hp            61939  HpWorkChain
+iteration_03_relax         62454  PwRelaxWorkChain
+iteration_03_scf_smearing  62882  PwBaseWorkChain
+iteration_03_scf_fixed     62904  PwBaseWorkChain
+iteration_03_hp            62928  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 58640' to see them
+################################################################################
+58688
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           58688
+uuid         de03ce9f-88e7-4437-995e-33946b510577
+label
+description
+ctime        2023-04-28 11:57:33.213510+02:00
+mtime        2023-04-29 11:25:05.089095+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         44763  InstalledCode
+        parameters                   58676  Dict
+        settings                     58677  Dict
+    clean_workdir                    58678  Bool
+    qpoints_distance                 58679  Float
+    parallelize_atoms                58680  Bool
+    parallelize_qpoints              58681  Bool
+    max_iterations                   58682  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     44762  InstalledCode
+            parameters               58664  Dict
+        kpoints_distance             58665  Float
+        kpoints_force_parity         58666  Bool
+        max_iterations               58667  Int
+    clean_workdir                    58668  Bool
+    max_meta_convergence_iterations  58669  Int
+    meta_convergence                 58670  Bool
+    volume_convergence               58671  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         44762  InstalledCode
+        parameters                   58672  Dict
+    kpoints_distance                 58673  Float
+    kpoints_force_parity             58674  Bool
+    max_iterations                   58675  Int
+clean_workdir                        58686  Bool
+hubbard_structure                    58659  HubbardStructureData
+max_iterations                       58687  Int
+meta_convergence                     58685  Bool
+tolerance_intersite                  58684  Float
+tolerance_onsite                     58683  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  66283  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       58689  structure_reorder_kinds
+iteration_01_relax         58716  PwRelaxWorkChain
+iteration_01_scf_smearing  61137  PwBaseWorkChain
+iteration_01_scf_fixed     61168  PwBaseWorkChain
+iteration_01_hp            61200  HpWorkChain
+CALL                       61625  structure_relabel_kinds
+iteration_02_relax         61628  PwRelaxWorkChain
+iteration_02_scf_smearing  63470  PwBaseWorkChain
+iteration_02_scf_fixed     63483  PwBaseWorkChain
+iteration_02_hp            63494  HpWorkChain
+iteration_03_relax         63551  PwRelaxWorkChain
+iteration_03_scf_smearing  66008  PwBaseWorkChain
+iteration_03_scf_fixed     66021  PwBaseWorkChain
+iteration_03_hp            66032  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 58688' to see them
+################################################################################
+60255
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           60255
+uuid         e2759c81-ff2f-4640-9968-88863cfc16fd
+label
+description
+ctime        2023-04-28 17:40:59.816635+02:00
+mtime        2023-04-28 23:16:06.999937+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         44763  InstalledCode
+        parameters                   60243  Dict
+        settings                     60244  Dict
+    clean_workdir                    60245  Bool
+    qpoints_distance                 60246  Float
+    parallelize_atoms                60247  Bool
+    parallelize_qpoints              60248  Bool
+    max_iterations                   60249  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     44762  InstalledCode
+            parameters               60231  Dict
+        kpoints_distance             60232  Float
+        kpoints_force_parity         60233  Bool
+        max_iterations               60234  Int
+    clean_workdir                    60235  Bool
+    max_meta_convergence_iterations  60236  Int
+    meta_convergence                 60237  Bool
+    volume_convergence               60238  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         44762  InstalledCode
+        parameters                   60239  Dict
+    kpoints_distance                 60240  Float
+    kpoints_force_parity             60241  Bool
+    max_iterations                   60242  Int
+clean_workdir                        60253  Bool
+hubbard_structure                    58659  HubbardStructureData
+max_iterations                       60254  Int
+meta_convergence                     60252  Bool
+tolerance_intersite                  60251  Float
+tolerance_onsite                     60250  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  61879  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       60281  structure_reorder_kinds
+iteration_01_relax         60299  PwRelaxWorkChain
+iteration_01_scf_smearing  60793  PwBaseWorkChain
+iteration_01_scf_fixed     60806  PwBaseWorkChain
+iteration_01_hp            60817  HpWorkChain
+CALL                       61052  structure_relabel_kinds
+iteration_02_relax         61055  PwRelaxWorkChain
+iteration_02_scf_smearing  61259  PwBaseWorkChain
+iteration_02_scf_fixed     61291  PwBaseWorkChain
+iteration_02_hp            61336  HpWorkChain
+iteration_03_relax         61659  PwRelaxWorkChain
+iteration_03_scf_smearing  61690  PwBaseWorkChain
+iteration_03_scf_fixed     61703  PwBaseWorkChain
+iteration_03_hp            61740  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 60255' to see them
+################################################################################
+63585
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           63585
+uuid         302ce8a9-64d0-48bd-8cef-a6d88a4ce6eb
+label
+description
+ctime        2023-04-29 08:05:35.239505+02:00
+mtime        2023-04-29 08:21:17.803638+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         44763  InstalledCode
+        parameters                   63573  Dict
+        settings                     63574  Dict
+    clean_workdir                    63575  Bool
+    qpoints_distance                 63576  Float
+    parallelize_atoms                63577  Bool
+    parallelize_qpoints              63578  Bool
+    max_iterations                   63579  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     44762  InstalledCode
+            parameters               63561  Dict
+        kpoints_distance             63562  Float
+        kpoints_force_parity         63563  Bool
+        max_iterations               63564  Int
+    clean_workdir                    63565  Bool
+    max_meta_convergence_iterations  63566  Int
+    meta_convergence                 63567  Bool
+    volume_convergence               63568  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         44762  InstalledCode
+        parameters                   63569  Dict
+    kpoints_distance                 63570  Float
+    kpoints_force_parity             63571  Bool
+    max_iterations                   63572  Int
+clean_workdir                        63583  Bool
+hubbard_structure                    58659  HubbardStructureData
+max_iterations                       63584  Int
+meta_convergence                     63582  Bool
+tolerance_intersite                  63581  Float
+tolerance_onsite                     63580  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  65501  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       63586  structure_reorder_kinds
+iteration_01_relax         63613  PwRelaxWorkChain
+iteration_01_scf_smearing  63818  PwBaseWorkChain
+iteration_01_scf_fixed     63862  PwBaseWorkChain
+iteration_01_hp            63895  HpWorkChain
+CALL                       64289  structure_relabel_kinds
+iteration_02_relax         64365  PwRelaxWorkChain
+iteration_02_scf_smearing  65108  PwBaseWorkChain
+iteration_02_scf_fixed     65121  PwBaseWorkChain
+iteration_02_hp            65132  HpWorkChain
+iteration_03_relax         65193  PwRelaxWorkChain
+iteration_03_scf_smearing  65224  PwBaseWorkChain
+iteration_03_scf_fixed     65237  PwBaseWorkChain
+iteration_03_hp            65248  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 63585' to see them
+################################################################################
+65316
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           65316
+uuid         46a7092f-a89e-4b8a-b8d9-35f52c914ace
+label
+description
+ctime        2023-04-29 08:18:43.364481+02:00
+mtime        2023-04-29 13:39:54.007952+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         44763  InstalledCode
+        parameters                   65304  Dict
+        settings                     65305  Dict
+    clean_workdir                    65306  Bool
+    qpoints_distance                 65307  Float
+    parallelize_atoms                65308  Bool
+    parallelize_qpoints              65309  Bool
+    max_iterations                   65310  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     44762  InstalledCode
+            parameters               65292  Dict
+        kpoints_distance             65293  Float
+        kpoints_force_parity         65294  Bool
+        max_iterations               65295  Int
+    clean_workdir                    65296  Bool
+    max_meta_convergence_iterations  65297  Int
+    meta_convergence                 65298  Bool
+    volume_convergence               65299  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         44762  InstalledCode
+        parameters                   65300  Dict
+    kpoints_distance                 65301  Float
+    kpoints_force_parity             65302  Bool
+    max_iterations                   65303  Int
+clean_workdir                        65314  Bool
+hubbard_structure                    58659  HubbardStructureData
+max_iterations                       65315  Int
+meta_convergence                     65313  Bool
+tolerance_intersite                  65312  Float
+tolerance_onsite                     65311  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  67010  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       65432  structure_reorder_kinds
+iteration_01_relax         65458  PwRelaxWorkChain
+iteration_01_scf_smearing  65623  PwBaseWorkChain
+iteration_01_scf_fixed     65636  PwBaseWorkChain
+iteration_01_hp            65647  HpWorkChain
+CALL                       65988  structure_relabel_kinds
+iteration_02_relax         65991  PwRelaxWorkChain
+iteration_02_scf_smearing  66251  PwBaseWorkChain
+iteration_02_scf_fixed     66311  PwBaseWorkChain
+iteration_02_hp            66335  HpWorkChain
+iteration_03_relax         66685  PwRelaxWorkChain
+iteration_03_scf_smearing  66755  PwBaseWorkChain
+iteration_03_scf_fixed     66803  PwBaseWorkChain
+iteration_03_hp            66846  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 65316' to see them
+################################################################################
+71760
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           71760
+uuid         516f5cfb-a82b-40f4-995c-6b310f4c6bac
+label
+description
+ctime        2023-05-03 08:22:28.944303+02:00
+mtime        2023-05-03 19:01:19.477281+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   71746  Dict
+        settings                     71747  Dict
+    clean_workdir                    71748  Bool
+    qpoints_distance                 71749  Float
+    parallelize_atoms                71750  Bool
+    parallelize_qpoints              71751  Bool
+    max_iterations                   71752  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+                Fe                   5064   UpfData
+            code                     70053  InstalledCode
+            parameters               71734  Dict
+        kpoints_distance             71735  Float
+        kpoints_force_parity         71736  Bool
+        max_iterations               71737  Int
+    clean_workdir                    71738  Bool
+    max_meta_convergence_iterations  71739  Int
+    meta_convergence                 71740  Bool
+    volume_convergence               71741  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+            Fe                       5064   UpfData
+        code                         70053  InstalledCode
+        parameters                   71742  Dict
+    kpoints_distance                 71743  Float
+    kpoints_force_parity             71744  Bool
+    max_iterations                   71745  Int
+clean_workdir                        71757  Bool
+hubbard_structure                    58660  HubbardStructureData
+max_iterations                       71759  Int
+meta_convergence                     71755  Bool
+tolerance_intersite                  71754  Float
+tolerance_onsite                     71753  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  73459  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       71764  structure_reorder_kinds
+iteration_01_relax         71785  PwRelaxWorkChain
+iteration_01_scf_smearing  72758  PwBaseWorkChain
+iteration_01_scf_fixed     72771  PwBaseWorkChain
+iteration_01_hp            72791  HpWorkChain
+iteration_02_relax         72963  PwRelaxWorkChain
+iteration_02_scf_smearing  73058  PwBaseWorkChain
+iteration_02_scf_fixed     73112  PwBaseWorkChain
+iteration_02_hp            73245  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 16 log messages for this calculation
+Run 'verdi process report 71760' to see them
+################################################################################
+71874
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           71874
+uuid         491cefc0-f623-4d60-8ce7-7c61abeabc61
+label
+description
+ctime        2023-05-03 08:37:32.443095+02:00
+mtime        2023-05-04 11:35:56.639199+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   71860  Dict
+        settings                     71861  Dict
+    clean_workdir                    71862  Bool
+    qpoints_distance                 71863  Float
+    parallelize_atoms                71864  Bool
+    parallelize_qpoints              71865  Bool
+    max_iterations                   71867  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+                Fe                   5064   UpfData
+            code                     70053  InstalledCode
+            parameters               71848  Dict
+        kpoints_distance             71849  Float
+        kpoints_force_parity         71850  Bool
+        max_iterations               71851  Int
+    clean_workdir                    71852  Bool
+    max_meta_convergence_iterations  71853  Int
+    meta_convergence                 71854  Bool
+    volume_convergence               71855  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+            Fe                       5064   UpfData
+        code                         70053  InstalledCode
+        parameters                   71856  Dict
+    kpoints_distance                 71857  Float
+    kpoints_force_parity             71858  Bool
+    max_iterations                   71859  Int
+clean_workdir                        71872  Bool
+hubbard_structure                    58660  HubbardStructureData
+max_iterations                       71873  Int
+meta_convergence                     71871  Bool
+tolerance_intersite                  71870  Float
+tolerance_onsite                     71868  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  75301  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       71878  structure_reorder_kinds
+iteration_01_relax         71908  PwRelaxWorkChain
+iteration_01_scf_smearing  73072  PwBaseWorkChain
+iteration_01_scf_fixed     73085  PwBaseWorkChain
+iteration_01_hp            73096  HpWorkChain
+iteration_02_relax         73444  PwRelaxWorkChain
+iteration_02_scf_smearing  74729  PwBaseWorkChain
+iteration_02_scf_fixed     74764  PwBaseWorkChain
+iteration_02_hp            74794  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 16 log messages for this calculation
+Run 'verdi process report 71874' to see them
+################################################################################
+74464
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           74464
+uuid         ee6d49a0-94c9-418d-a0f3-23366e0141ce
+label
+description
+ctime        2023-05-04 08:56:37.040845+02:00
+mtime        2023-05-04 15:16:23.206695+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   74452  Dict
+        settings                     74453  Dict
+    clean_workdir                    74454  Bool
+    qpoints_distance                 74455  Float
+    parallelize_atoms                74456  Bool
+    parallelize_qpoints              74457  Bool
+    max_iterations                   74458  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     70053  InstalledCode
+            parameters               74440  Dict
+        kpoints_distance             74441  Float
+        kpoints_force_parity         74442  Bool
+        max_iterations               74443  Int
+    clean_workdir                    74444  Bool
+    max_meta_convergence_iterations  74445  Int
+    meta_convergence                 74446  Bool
+    volume_convergence               74447  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         70053  InstalledCode
+        parameters                   74448  Dict
+    kpoints_distance                 74449  Float
+    kpoints_force_parity             74450  Bool
+    max_iterations                   74451  Int
+clean_workdir                        74462  Bool
+hubbard_structure                    58659  HubbardStructureData
+max_iterations                       74463  Int
+meta_convergence                     74461  Bool
+tolerance_intersite                  74460  Float
+tolerance_onsite                     74459  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  76226  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       74465  structure_reorder_kinds
+iteration_01_relax         74468  PwRelaxWorkChain
+iteration_01_scf_smearing  75269  PwBaseWorkChain
+iteration_01_scf_fixed     75315  PwBaseWorkChain
+iteration_01_hp            75374  HpWorkChain
+iteration_02_relax         75692  PwRelaxWorkChain
+iteration_02_scf_smearing  75933  PwBaseWorkChain
+iteration_02_scf_fixed     75954  PwBaseWorkChain
+iteration_02_hp            75973  HpWorkChain
+iteration_03_relax         76061  PwRelaxWorkChain
+iteration_03_scf_smearing  76124  PwBaseWorkChain
+iteration_03_scf_fixed     76146  PwBaseWorkChain
+iteration_03_hp            76165  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 74464' to see them
+################################################################################
+77280
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           77280
+uuid         bf56af61-eabb-401a-8f4a-7a95b5e131d8
+label
+description
+ctime        2023-05-05 08:00:39.950912+02:00
+mtime        2023-05-07 19:29:08.828484+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   77268  Dict
+        settings                     77269  Dict
+    clean_workdir                    77270  Bool
+    qpoints_distance                 77271  Float
+    parallelize_atoms                77272  Bool
+    parallelize_qpoints              77273  Bool
+    max_iterations                   77274  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Fe                   5064   UpfData
+            code                     70053  InstalledCode
+            parameters               77256  Dict
+        kpoints_distance             77257  Float
+        kpoints_force_parity         77258  Bool
+        max_iterations               77259  Int
+    clean_workdir                    77260  Bool
+    max_meta_convergence_iterations  77261  Int
+    meta_convergence                 77262  Bool
+    volume_convergence               77263  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Fe                       5064   UpfData
+        code                         70053  InstalledCode
+        parameters                   77264  Dict
+    kpoints_distance                 77265  Float
+    kpoints_force_parity             77266  Bool
+    max_iterations                   77267  Int
+clean_workdir                        77278  Bool
+hubbard_structure                    58659  HubbardStructureData
+max_iterations                       77279  Int
+meta_convergence                     77277  Bool
+tolerance_intersite                  77276  Float
+tolerance_onsite                     77275  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  83841  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             77281  structure_reorder_kinds
+iteration_01_relax               77299  PwRelaxWorkChain
+iteration_01_scf_smearing        79368  PwBaseWorkChain
+iteration_01_scf_fixed_magnetic  79499  PwBaseWorkChain
+iteration_01_hp                  79552  HpWorkChain
+iteration_02_relax               79916  PwRelaxWorkChain
+iteration_02_scf_smearing        80236  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  80249  PwBaseWorkChain
+iteration_02_hp                  80260  HpWorkChain
+iteration_03_relax               80317  PwRelaxWorkChain
+iteration_03_scf_smearing        82178  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  82796  PwBaseWorkChain
+iteration_03_hp                  83060  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 77280' to see them
+################################################################################
+77469
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           77469
+uuid         4aaa04a5-d64e-41ac-9748-63fd47e7dd13
+label
+description
+ctime        2023-05-05 08:06:03.811238+02:00
+mtime        2023-05-06 16:23:48.656866+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   77457  Dict
+        settings                     77458  Dict
+    clean_workdir                    77459  Bool
+    qpoints_distance                 77460  Float
+    parallelize_atoms                77461  Bool
+    parallelize_qpoints              77462  Bool
+    max_iterations                   77463  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+                Fe                   5064   UpfData
+            code                     70053  InstalledCode
+            parameters               77445  Dict
+        kpoints_distance             77446  Float
+        kpoints_force_parity         77447  Bool
+        max_iterations               77448  Int
+    clean_workdir                    77449  Bool
+    max_meta_convergence_iterations  77450  Int
+    meta_convergence                 77451  Bool
+    volume_convergence               77452  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+            Fe                       5064   UpfData
+        code                         70053  InstalledCode
+        parameters                   77453  Dict
+    kpoints_distance                 77454  Float
+    kpoints_force_parity             77455  Bool
+    max_iterations                   77456  Int
+clean_workdir                        77467  Bool
+hubbard_structure                    58660  HubbardStructureData
+max_iterations                       77468  Int
+meta_convergence                     77466  Bool
+tolerance_intersite                  77465  Float
+tolerance_onsite                     77464  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  80138  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             77475  structure_reorder_kinds
+iteration_01_relax               77504  PwRelaxWorkChain
+iteration_01_scf_smearing        77913  PwBaseWorkChain
+iteration_01_scf_fixed_magnetic  78000  PwBaseWorkChain
+iteration_01_hp                  78073  HpWorkChain
+iteration_02_relax               78652  PwRelaxWorkChain
+iteration_02_scf_smearing        79196  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  79353  PwBaseWorkChain
+iteration_02_hp                  79402  HpWorkChain
+iteration_03_relax               79893  PwRelaxWorkChain
+iteration_03_scf_smearing        79996  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  80023  PwBaseWorkChain
+iteration_03_hp                  80047  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 22 log messages for this calculation
+Run 'verdi process report 77469' to see them
+################################################################################
+77506
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           77506
+uuid         b4fcdc23-7f15-4d2e-a76c-8df2969db7a3
+label
+description
+ctime        2023-05-05 08:06:06.477555+02:00
+mtime        2023-05-05 19:13:55.577995+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   77491  Dict
+        settings                     77492  Dict
+    clean_workdir                    77493  Bool
+    qpoints_distance                 77494  Float
+    parallelize_atoms                77496  Bool
+    parallelize_qpoints              77497  Bool
+    max_iterations                   77498  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+            code                     70053  InstalledCode
+            parameters               77477  Dict
+        kpoints_distance             77478  Float
+        kpoints_force_parity         77479  Bool
+        max_iterations               77480  Int
+    clean_workdir                    77482  Bool
+    max_meta_convergence_iterations  77483  Int
+    meta_convergence                 77484  Bool
+    volume_convergence               77485  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+        code                         70053  InstalledCode
+        parameters                   77486  Dict
+    kpoints_distance                 77488  Float
+    kpoints_force_parity             77489  Bool
+    max_iterations                   77490  Int
+clean_workdir                        77503  Bool
+hubbard_structure                    58661  HubbardStructureData
+max_iterations                       77505  Int
+meta_convergence                     77501  Bool
+tolerance_intersite                  77500  Float
+tolerance_onsite                     77499  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  79809  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             77512  structure_reorder_kinds
+iteration_01_relax               77517  PwRelaxWorkChain
+iteration_01_scf_smearing        77858  PwBaseWorkChain
+iteration_01_scf_fixed_magnetic  77899  PwBaseWorkChain
+iteration_01_hp                  77947  HpWorkChain
+iteration_02_relax               78322  PwRelaxWorkChain
+iteration_02_scf_smearing        78808  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  79101  PwBaseWorkChain
+iteration_02_hp                  79112  HpWorkChain
+iteration_03_relax               79296  PwRelaxWorkChain
+iteration_03_scf_smearing        79638  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  79659  PwBaseWorkChain
+iteration_03_hp                  79684  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 23 log messages for this calculation
+Run 'verdi process report 77506' to see them
+################################################################################
+81280
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           81280
+uuid         4d216fe1-cf97-40b2-8192-ae1ec2182500
+label
+description
+ctime        2023-05-07 12:44:18.945709+02:00
+mtime        2023-05-08 00:39:22.671357+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   81264  Dict
+        settings                     81265  Dict
+    clean_workdir                    81266  Bool
+    qpoints_distance                 81267  Float
+    parallelize_atoms                81268  Bool
+    parallelize_qpoints              81269  Bool
+    max_iterations                   81270  Int
+relax
+    base
+        pw
+            pseudos
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+            code                     70053  InstalledCode
+            parameters               81251  Dict
+        kpoints_distance             81252  Float
+        kpoints_force_parity         81253  Bool
+        max_iterations               81254  Int
+    clean_workdir                    81255  Bool
+    max_meta_convergence_iterations  81256  Int
+    meta_convergence                 81257  Bool
+    volume_convergence               81258  Float
+scf
+    pw
+        pseudos
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+        code                         70053  InstalledCode
+        parameters                   81259  Dict
+    kpoints_distance                 81260  Float
+    kpoints_force_parity             81262  Bool
+    max_iterations                   81263  Int
+clean_workdir                        81276  Bool
+hubbard_structure                    81271  HubbardStructureData
+max_iterations                       81278  Int
+meta_convergence                     81275  Bool
+relax_frequency                      81277  Int
+tolerance_intersite                  81274  Float
+tolerance_onsite                     81272  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  85636  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             81387  structure_reorder_kinds
+iteration_01_scf_smearing        81536  PwBaseWorkChain
+iteration_01_hp                  81875  HpWorkChain
+iteration_02_relax               83077  PwRelaxWorkChain
+iteration_02_scf_smearing        83477  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  83662  PwBaseWorkChain
+iteration_02_hp                  83845  HpWorkChain
+iteration_03_scf_smearing        84499  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  84564  PwBaseWorkChain
+iteration_03_hp                  84688  HpWorkChain
+iteration_04_relax               85144  PwRelaxWorkChain
+iteration_04_scf_smearing        85344  PwBaseWorkChain
+iteration_04_scf_fixed_magnetic  85365  PwBaseWorkChain
+iteration_04_hp                  85387  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 28 log messages for this calculation
+Run 'verdi process report 81280' to see them
+################################################################################
+81379
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           81379
+uuid         26987e54-65b9-4b85-bc3e-f7dc9ec4e681
+label
+description
+ctime        2023-05-07 12:44:27.698451+02:00
+mtime        2023-05-08 03:23:56.561651+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   81365  Dict
+        settings                     81366  Dict
+    clean_workdir                    81367  Bool
+    qpoints_distance                 81368  Float
+    parallelize_atoms                81369  Bool
+    parallelize_qpoints              81370  Bool
+    max_iterations                   81371  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+            code                     70053  InstalledCode
+            parameters               81350  Dict
+        kpoints_distance             81351  Float
+        kpoints_force_parity         81353  Bool
+        max_iterations               81354  Int
+    clean_workdir                    81355  Bool
+    max_meta_convergence_iterations  81356  Int
+    meta_convergence                 81357  Bool
+    volume_convergence               81358  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+        code                         70053  InstalledCode
+        parameters                   81359  Dict
+    kpoints_distance                 81361  Float
+    kpoints_force_parity             81362  Bool
+    max_iterations                   81363  Int
+clean_workdir                        81376  Bool
+hubbard_structure                    81372  HubbardStructureData
+max_iterations                       81378  Int
+meta_convergence                     81375  Bool
+relax_frequency                      81377  Int
+tolerance_intersite                  81374  Float
+tolerance_onsite                     81373  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  86162  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             81508  structure_reorder_kinds
+iteration_01_scf_smearing        81539  PwBaseWorkChain
+iteration_01_hp                  81750  HpWorkChain
+iteration_02_relax               82844  PwRelaxWorkChain
+iteration_02_scf_smearing        83992  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  84005  PwBaseWorkChain
+iteration_02_hp                  84052  HpWorkChain
+iteration_03_scf_smearing        84673  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  84766  PwBaseWorkChain
+iteration_03_hp                  84825  HpWorkChain
+iteration_04_relax               85304  PwRelaxWorkChain
+iteration_04_scf_smearing        85441  PwBaseWorkChain
+iteration_04_scf_fixed_magnetic  85458  PwBaseWorkChain
+iteration_04_hp                  85483  HpWorkChain
+iteration_05_scf_smearing        85697  PwBaseWorkChain
+iteration_05_scf_fixed_magnetic  85710  PwBaseWorkChain
+iteration_05_hp                  85721  HpWorkChain
+iteration_06_relax               85915  PwRelaxWorkChain
+iteration_06_scf_smearing        85946  PwBaseWorkChain
+iteration_06_scf_fixed_magnetic  85968  PwBaseWorkChain
+iteration_06_hp                  85979  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 42 log messages for this calculation
+Run 'verdi process report 81379' to see them
+################################################################################
+81413
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           81413
+uuid         de138bcb-57b3-4e7f-83af-d9764d465638
+label
+description
+ctime        2023-05-07 12:44:30.892507+02:00
+mtime        2023-05-07 23:01:50.205895+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   81396  Dict
+        settings                     81397  Dict
+    clean_workdir                    81399  Bool
+    qpoints_distance                 81401  Float
+    parallelize_atoms                81402  Bool
+    parallelize_qpoints              81403  Bool
+    max_iterations                   81404  Int
+relax
+    base
+        pw
+            pseudos
+                Li                   5066   UpfData
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+            code                     70053  InstalledCode
+            parameters               81383  Dict
+        kpoints_distance             81384  Float
+        kpoints_force_parity         81385  Bool
+        max_iterations               81386  Int
+    clean_workdir                    81388  Bool
+    max_meta_convergence_iterations  81389  Int
+    meta_convergence                 81390  Bool
+    volume_convergence               81391  Float
+scf
+    pw
+        pseudos
+            Li                       5066   UpfData
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+        code                         70053  InstalledCode
+        parameters                   81392  Dict
+    kpoints_distance                 81393  Float
+    kpoints_force_parity             81394  Bool
+    max_iterations                   81395  Int
+clean_workdir                        81410  Bool
+hubbard_structure                    81405  HubbardStructureData
+max_iterations                       81412  Int
+meta_convergence                     81409  Bool
+relax_frequency                      81411  Int
+tolerance_intersite                  81408  Float
+tolerance_onsite                     81406  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  85119  HubbardStructureData
+
+Called                        PK  Type
+-------------------------  -----  -----------------------
+CALL                       81460  structure_reorder_kinds
+iteration_01_scf_smearing  81482  PwBaseWorkChain
+iteration_01_hp            81868  HpWorkChain
+iteration_02_relax         82997  PwRelaxWorkChain
+iteration_02_scf_smearing  83517  PwBaseWorkChain
+iteration_02_hp            83670  HpWorkChain
+iteration_03_scf_smearing  84268  PwBaseWorkChain
+iteration_03_hp            84511  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 19 log messages for this calculation
+Run 'verdi process report 81413' to see them
+################################################################################
+86240
+Property     Value
+-----------  ------------------------------------
+type         SelfConsistentHubbardWorkChain
+state        Finished [0]
+pk           86240
+uuid         ade623a1-0b96-4e52-b342-5412c912cc38
+label
+description
+ctime        2023-05-08 12:26:08.561282+02:00
+mtime        2023-05-08 23:19:21.844358+02:00
+
+Inputs                               PK     Type
+-----------------------------------  -----  --------------------
+hubbard
+    hp
+        code                         70054  InstalledCode
+        parameters                   86226  Dict
+        settings                     86227  Dict
+    clean_workdir                    86228  Bool
+    qpoints_distance                 86229  Float
+    parallelize_atoms                86230  Bool
+    parallelize_qpoints              86231  Bool
+    max_iterations                   86232  Int
+relax
+    base
+        pw
+            pseudos
+                O                    5135   UpfData
+                P                    5117   UpfData
+                Mn                   5067   UpfData
+                Fe                   5064   UpfData
+            code                     70053  InstalledCode
+            parameters               86212  Dict
+            settings                 86213  Dict
+        kpoints_distance             86214  Float
+        kpoints_force_parity         86215  Bool
+        max_iterations               86216  Int
+    clean_workdir                    86217  Bool
+    max_meta_convergence_iterations  86218  Int
+    meta_convergence                 86219  Bool
+    volume_convergence               86220  Float
+scf
+    pw
+        pseudos
+            O                        5135   UpfData
+            P                        5117   UpfData
+            Mn                       5067   UpfData
+            Fe                       5064   UpfData
+        code                         70053  InstalledCode
+        parameters                   86221  Dict
+        settings                     86222  Dict
+    kpoints_distance                 86223  Float
+    kpoints_force_parity             86224  Bool
+    max_iterations                   86225  Int
+clean_workdir                        86237  Bool
+hubbard_structure                    86233  HubbardStructureData
+max_iterations                       86239  Int
+meta_convergence                     86236  Bool
+relax_frequency                      86238  Int
+tolerance_intersite                  86235  Float
+tolerance_onsite                     86234  Float
+
+Outputs               PK  Type
+-----------------  -----  --------------------
+hubbard_structure  87322  HubbardStructureData
+
+Called                              PK  Type
+-------------------------------  -----  -----------------------
+CALL                             86241  structure_reorder_kinds
+iteration_01_scf_smearing        86246  PwBaseWorkChain
+iteration_01_hp                  86320  HpWorkChain
+iteration_02_relax               86560  PwRelaxWorkChain
+iteration_02_scf_smearing        86959  PwBaseWorkChain
+iteration_02_scf_fixed_magnetic  86973  PwBaseWorkChain
+iteration_02_hp                  86984  HpWorkChain
+iteration_03_scf_smearing        87146  PwBaseWorkChain
+iteration_03_scf_fixed_magnetic  87159  PwBaseWorkChain
+iteration_03_hp                  87170  HpWorkChain
+
+Log messages
+----------------------------------------------
+There are 21 log messages for this calculation
+Run 'verdi process report 86240' to see them
+################################################################################

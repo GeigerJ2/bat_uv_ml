@@ -361,3 +361,17 @@ for structure_data in structure_datas:
 
 # ? doesn't work as no IONS card in overrides, so no AttributeDict created here
 # option3_builder.relax.base.pw.parameters["IONS"]["ion_dynamics"] = Str("damp")
+# %%
+# Finding the structures with the bandgap > 1.0.
+qb_success = QueryBuilder()
+qb_success.append(
+    StructureData, tag="structure", project="*"
+)  # Here we are projecting the entire structure object
+qb_success.append(CalcJobNode, with_incoming="structure", tag="calculation")
+qb_success.append(
+    Dict, with_incoming="calculation", filters={"attributes.bandgap": {">": 1.0}}
+)
+
+# Adding the structures in 'promising_structures' group.
+group = load_group(label="promising_structures")
+group.add_nodes(q.all(flat=True))

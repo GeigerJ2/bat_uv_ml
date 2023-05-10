@@ -1,5 +1,6 @@
 from aiida.orm import StructureData, load_node
 from aiida_pyconfsamp.core import ConfigClass
+from aiida_quantumespresso.data.hubbard_structure import HubbardStructureData
 from ase.atoms import Atoms
 from ase.visualize import view
 from project_data import DEFAULT_BUILDER_DICT, DEFAULT_HUBBARD_DICT, GLOBAL_SYMPREC

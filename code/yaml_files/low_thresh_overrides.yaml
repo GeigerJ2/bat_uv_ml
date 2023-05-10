@@ -1,5 +1,5 @@
 ---
-clean_workdir: true
+clean_workdir: false
 meta_convergence: true
 tolerance_onsite: 0.1
 tolerance_intersite: 0.01
@@ -14,9 +14,13 @@ scf:
         electron_maxstep: 600
         mixing_mode: "local-TF"
         conv_thr: 5.6e-8
+    settings:
+      cmdline:
+        - "-nk"
+        - "8"
 relax:
   pseudo_family: "SSSP/1.2/PBEsol/efficiency"
-  clean_workdir: true
+  clean_workdir: false
   meta_convergence_iterations: 10
   base:
     kpoints_distance: 0.4
@@ -31,20 +35,24 @@ relax:
           electron_maxstep: 600
           mixing_mode: "local-TF"
           conv_thr: 5.6e-8
-        # IONS:
-        #   trust_radius_min: 1.0e-4
-        # trust_radius_max: 1.0e-2
-        # trust_radius_ini:
-        # bfgs_ndim: 8
+        IONS:
+          trust_radius_min: 1.0e-4
+          bfgs_ndim: 8
+          # trust_radius_max: 1.0e-2
+          # trust_radius_ini:
+      settings:
+        cmdline:
+          - "-nk"
+          - "8"
 hubbard:
   clean_workdir: true
-  parallelize_atoms: true
+  parallelize_atoms: false
   parallelize_qpoints: false
   max_iterations: 10
   hp:
     parameters:
       INPUTHP:
-        dist_thr: 0.01
+        dist_thr: 0.1
     settings:
       parent_folder_symlink: true
       cmdline:

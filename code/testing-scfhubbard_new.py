@@ -48,17 +48,18 @@ for ase_structure in ase_list:
 pk_list = [58659, 58660, 58661, 58662, 58663]
 name_list = ["lfpo", "lfmpo", "lmpo", "lmno", "lmo"]
 
-# %% #? Try out lfpo with lower mixing beta and ion damping
+# %% #? Try out all with a bunch of options
 
 for name, pk in list(zip(name_list, pk_list)):
-    if name in ["lfpo", "lfmpo", "lmpo"]:
-        option3_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+    # if name in ["lfpo", "lfmpo", "lmpo"]:
+    if True:
+        builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
             pw_code=PW_CODE_LUMI,
             hp_code=HP_CODE_LUMI,
             hubbard_structure=load_node(pk),
             protocol="moderate",
             overrides=pathlib.Path(
-                "/home/jgeiger/projects/bat_uv_ml/code/yaml_files/lfpo_overrides.yaml"
+                "/home/jgeiger/projects/bat_uv_ml/code/yaml_files/low_thresh_overrides.yaml"
             ),
             spin_type=SpinType.COLLINEAR,
         )
@@ -82,13 +83,16 @@ for name, pk in list(zip(name_list, pk_list)):
         # )
 
         # ? Defaults:  "conv_thr": 5.6e-09, "etot_conv_thr": 0.00028, "forc_conv_thr": 0.0001
-        option3_builder.relax.base.pw.parameters["CONTROL"]["etot_conv_thr"] = 0.0028
-        option3_builder.relax.base.pw.parameters["CONTROL"]["forc_conv_thr"] = 0.001
-        option3_builder.relax.base.pw.parameters["ELECTRONS"]["conv_thr"] = 5.6e-8
-        option3_builder.hubbard.hp.parameters["INPUTHP"]["dist_thr"] = 1e-1
+        # option3_builder.relax.base.pw.parameters["CONTROL"]["etot_conv_thr"] = 0.0028
+        # option3_builder.relax.base.pw.parameters["CONTROL"]["forc_conv_thr"] = 0.001
+        # option3_builder.relax.base.pw.parameters["ELECTRONS"]["conv_thr"] = 5.6e-8
+        # option3_builder.hubbard.hp.parameters["INPUTHP"]["dist_thr"] = 1e-1
+        builder.skip_first_relax = True
+        builder.hubbard.hp.parameters["INPUTHP"]["docc_thr"] = 1e-15
 
-        submit_node = submit(option3_builder)
-        print(name, submit_node.pk)
+        # submit_node = submit(builder)
+        # submit_node.label = "docc_thr_skip_first"
+        # print(name, submit_node.pk)
 
 # %% #? Try out new Lumi compilation
 
@@ -189,7 +193,7 @@ print(debug_builder.hubbard.hp.settings.get_dict())
 
 # %% Full parallelization again
 
-option3_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
     pw_code=PW_CODE_EIGER,
     hp_code=HP_CODE_EIGER,
     hubbard_structure=BATIO3_HUBBARD_DATA,
@@ -199,20 +203,20 @@ option3_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
     ),
 )
 
-full_parallel_submit_node = submit(option3_builder)
+full_parallel_submit_node = submit(builder)
 print(full_parallel_submit_node)
 
 # %%
 
 # print(debug_builder)
-print(option3_builder.hubbard.hp.settings.get_dict())
+print(builder.hubbard.hp.settings.get_dict())
 
 
 # %% #? Now with higher max_iterations in overrides, and with local-TF mixing, higher elecron_maxstep and higher nstep
 
 for name, pk in list(zip(name_list, pk_list)):
     if name in ["lfpo", "lfmpo", "lmpo"]:
-        option3_builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
+        builder = SelfConsistentHubbardWorkChain.get_builder_from_protocol(
             pw_code=PW_CODE_LUMI,
             hp_code=HP_CODE_LUMI,
             hubbard_structure=load_node(pk),
@@ -222,7 +226,7 @@ for name, pk in list(zip(name_list, pk_list)):
             ),
         )
 
-        submit_node = submit(option3_builder)
+        submit_node = submit(builder)
         print(name, submit_node.pk)
 
 # %%
@@ -248,7 +252,6 @@ for name, pk in list(zip(name_list, pk_list)):
 #         ),
 #     )
 
-#     # option3_builder.skip_first_relax = False
 #     # option3_builder.hubbard.parallelize_atoms = Bool(True)
 #     # option3_builder.hubbard.parallelize_qpoints = Bool(False)
 #     # option3_builder.hubbard.hp.settings.parent_folder_symlink = Bool(True)
