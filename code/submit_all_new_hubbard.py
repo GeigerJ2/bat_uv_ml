@@ -41,6 +41,8 @@ builder_dict["overrides"] = Path(
     os.path.join("yaml_files", "low_thresh_overrides.yaml")
 )
 
+print(builder_dict)
+# %%
 pk_list = [58659, 58660, 58661, 58662, 58663]
 name_list = ["lfpo", "lfmpo", "lmpo", "lmno", "lmo"]
 

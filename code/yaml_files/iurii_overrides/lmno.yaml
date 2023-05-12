@@ -1,50 +1,62 @@
 ---
-clean_workdir: true
+# Settings from: ~/projects/bat_uv_ml/data/calcs_iurii/spinel/LixMn2O4/DFT+U+V/LiMn2O4/
+clean_workdir: false
 meta_convergence: true
 tolerance_onsite: 0.1
 tolerance_intersite: 0.01
-max_iterations: 10
+max_iterations: 5
 skip_first_relax: false
 scf:
   pseudo_family: "SSSP/1.2/PBEsol/efficiency"
-  max_iterations: 10
+  max_iterations: 5
   pw:
     parameters:
       ELECTRONS:
         electron_maxstep: 600
         mixing_mode: "local-TF"
-        # conv_thr: 1.0e-8
+        mixing_beta: 0.05
+    settings:
+      cmdline:
+        - "-nk"
+        - "8"
 relax:
   pseudo_family: "SSSP/1.2/PBEsol/efficiency"
-  clean_workdir: true
-  meta_convergence_iterations: 10
+  clean_workdir: false
+  meta_convergence_iterations: 5
   base:
     kpoints_distance: 0.4
-    max_iterations: 10
+    max_iterations: 5
     pw:
       parameters:
         CONTROL:
           nstep: 200
-          # etot_conv_thr: 1.e-6
-          # forc_conv_thr: 1.e-5
+          # etot_conv_thr: 0.0028
+          # forc_conv_thr: 0.001
         ELECTRONS:
           electron_maxstep: 600
           mixing_mode: "local-TF"
-          # conv_thr: 1.0e-8
+          mixing_beta: 0.05
+          # conv_thr: 5.6e-8
         # IONS:
-        #   trust_radius_min: 1.0e-4
+        # trust_radius_min: 1.0e-4
+        # bfgs_ndim: 8
         # trust_radius_max: 1.0e-2
         # trust_radius_ini:
-        # bfgs_ndim: 8
+      settings:
+        cmdline:
+          - "-nk"
+          - "8"
 hubbard:
-  clean_workdir: false
+  clean_workdir: true
   parallelize_atoms: true
   parallelize_qpoints: false
-  max_iterations: 10
+  max_iterations: 5
   hp:
     parameters:
       INPUTHP:
-        dist_thr: 0.01
+        conv_thr_chi: 1.0e-7
+        alpha_mix(1): 0.1
+        niter_max: 200
     settings:
       parent_folder_symlink: true
       cmdline:

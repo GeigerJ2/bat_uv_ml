@@ -57,4 +57,5 @@ qb.count()
 for calc in qb.iterall():
     print(calc[0].pk)
 
+
 # %%

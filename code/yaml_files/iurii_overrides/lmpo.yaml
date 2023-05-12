@@ -1,0 +1,67 @@
+---
+# Settings from: /home/jgeiger/projects/bat_uv_ml/data/calcs_iurii/olivine/LixMnPO4/Li1.00/DFT_plus_UV
+clean_workdir: false
+meta_convergence: true
+tolerance_onsite: 0.1
+tolerance_intersite: 0.01
+max_iterations: 5
+skip_first_relax: false
+scf:
+  pseudo_family: "SSSP/1.2/PBEsol/efficiency"
+  max_iterations: 5
+  pw:
+    parameters:
+      ELECTRONS:
+        electron_maxstep: 600
+        mixing_mode: "local-TF"
+        mixing_beta: 0.1
+      SYSTEM:
+        occupations: "smearing"
+        smearing: "gauss"
+        degauss: 0.005
+    settings:
+      cmdline:
+        - "-nk"
+        - "8"
+relax:
+  pseudo_family: "SSSP/1.2/PBEsol/efficiency"
+  clean_workdir: false
+  meta_convergence_iterations: 5
+  base:
+    kpoints_distance: 0.4
+    max_iterations: 5
+    pw:
+      parameters:
+        CONTROL:
+          nstep: 200
+          # etot_conv_thr: 0.0028
+          # forc_conv_thr: 0.001
+        SYSTEM:
+          occupations: "smearing"
+          smearing: "gauss"
+          degauss: 0.005
+        ELECTRONS:
+          electron_maxstep: 600
+          mixing_mode: "local-TF"
+          mixing_beta: 0.1
+          # conv_thr: 5.6e-8
+      settings:
+        cmdline:
+          - "-nk"
+          - "8"
+hubbard:
+  clean_workdir: true
+  parallelize_atoms: true
+  parallelize_qpoints: false
+  max_iterations: 5
+  hp:
+    parameters:
+      INPUTHP:
+        niter_max: 200
+        alpha_mix(1): 0.1
+        conv_thr_chi: 1.0e-8
+    settings:
+      parent_folder_symlink: true
+      cmdline:
+        - "-nk"
+        - "16"

@@ -34,17 +34,6 @@ for ase_structure in ase_list:
     ase_structure.center()
     centered_ase_list.append(ase_structure)
 
-# view(centered_ase_list)
-
-# sd_list = [StructureData(ase=_) for _ in centered_ase_list]
-
-# hubbard_list = [
-#     generate_hubbards(structuredata=_, hubbard_dict=DEFAULT_HUBBARD_DICT)
-#     for _ in sd_list
-# ]
-# node_list = [_.store() for _ in hubbard_list]
-# pk_list = [_.pk for _ in node_list]
-
 pk_list = [58659, 58660, 58661, 58662, 58663]
 name_list = ["lfpo", "lfmpo", "lmpo", "lmno", "lmo"]
 
@@ -90,9 +79,9 @@ for name, pk in list(zip(name_list, pk_list)):
         builder.skip_first_relax = True
         builder.hubbard.hp.parameters["INPUTHP"]["docc_thr"] = 1e-15
 
-        # submit_node = submit(builder)
-        # submit_node.label = "docc_thr_skip_first"
-        # print(name, submit_node.pk)
+        submit_node = submit(builder)
+        submit_node.label = "docc_thr_skip_first"
+        print(name, submit_node.pk)
 
 # %% #? Try out new Lumi compilation
 

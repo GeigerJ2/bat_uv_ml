@@ -5,6 +5,8 @@ from pprint import pprint
 from aiida import load_profile
 from aiida.orm import *
 from aiida_quantumespresso_hp.workflows.hubbard import SelfConsistentHubbardWorkChain
+from aiida_quantumespresso.workflows
+from aiida_vasp.workchains.converge import ConvergeWorkChain
 from ase.visualize import view
 from IPython.core.interactiveshell import InteractiveShell
 
@@ -115,3 +117,32 @@ for successful_run in successful_runs:
 # print(final_pks)
 # view(ase_structures)
 # print(ase_structures)
+
+# %%
+
+mykind = {'mass': 51.9961, 'name': 'Cr', 'symbols': ['Cr'], 'weights': [1.0]}
+
+qb = QueryBuilder()
+
+qb.append(
+    WorkChainNode,
+    # WorkChainNode,
+    filters={"attributes.process_state": "finished", "attributes.exit_status": 0},
+    tag="converge_wc",
+    project="*",
+)
+qb.append(
+    StructureData,
+    with_incoming="converge_wc",
+    filters={
+        "attributes.kinds": {'contains': [mykind]},
+    },
+)
+for wc_node in qb.all(flat=True):
+    if 'structure' in wc_node.inputs:
+        print(wc_node)
+        wc_node.inputs.structure.attributes["kinds"]
+        break
+
+
+# %%
